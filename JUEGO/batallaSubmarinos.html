@@ -43,7 +43,7 @@
             };
 
             let traerayuda1=distanciaRoja=>{
-                if (distanciaRoja<15){
+                if (distanciaRoja<25){
                     return 'Finalmemnte encontraste a ese pinche Submarino en el area ROJA ....... buen trabajo'
                 } else if (distanciaRoja<30){
                     return 'Atento y ojo visor, parece que el submarino del area ROJA esta bastante cerca ....'
@@ -57,7 +57,7 @@
             };
 
             let traerayuda2=distanciaAzul=>{
-                if (distanciaAzul<15){
+                if (distanciaAzul<25){
                     return 'Finalmemnte encontraste a ese pinche Submarino en el area AZUL ....... buen trabajo'
                 } else if (distanciaAzul<30){
                     return 'Atento y ojo visor, parece que el submarino del area AZUL esta bastante cerca ....'
@@ -80,10 +80,10 @@
                 p1.innerHTML = ayudaRoja;
                 p2.innerHTML = ayudaAzul;
 
-                if (distanciaRoja < 15) {
+                if (distanciaRoja < 25) {
                     alert('Lograste destruir al submarino en la zona ROJA .... ' + click + ' clicks, felicidades ....');
                 }
-                if (distanciaAzul < 15) {
+                if (distanciaAzul < 25) {
                     alert('Lograste destruir al submarino en la zona AZUL .... ' + click + ' clicks, felicidades ....');
                 }
             });
