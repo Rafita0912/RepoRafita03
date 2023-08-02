@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Destruye por lo menos 1 de 2 submarinos nucleares que amenazan con atacarte en las zonas ROJA y AZUL</h1>
+        <img src="./RADARES.jpg" alt="" id="radar">
+        <p id="distanciaRoja"></p>
+        <p id="distanciaAzul"></p>
+        <script>
+            let radar = document.getElementById('radar');
+            let p1 = document.getElementById('distanciaRoja');
+            let p2 = document.getElementById('distanciaAzul');
+            
+            let numeroAzar = (valor) => Math.floor(Math.random() * valor);
+
+            let ancho = 819;
+            let alto = 403;
+
+            let subRojo = {
+                xRojo: numeroAzar(ancho - 410),
+                yRojo: numeroAzar(alto),
+            };
+
+            let subAzul = {
+                xAzul: numeroAzar(ancho - 410) + 410,
+                yAzul: numeroAzar(alto),
+            };
+
+            let traerdistancia1 = (event, subRojo) => {
+                let difRojox = event.offsetX - subRojo.xRojo;
+                let difRojoy = event.offsetY - subRojo.yRojo;
+                return Math.sqrt((difRojox * difRojox) + (difRojoy * difRojoy));
+            };
+
+            let traerdistancia2 = (event, subAzul) => {
+                let difAzulx = event.offsetX - subAzul.xAzul;
+                let difAzuly = event.offsetY - subAzul.yAzul;
+                return Math.sqrt((difAzulx * difAzulx) + (difAzuly * difAzuly));
+            };
+
+            let traerayuda1=distanciaRoja=>{
+                if (distanciaRoja<15){
+                    return 'Finalmemnte encontraste a ese pinche Submarino en el area ROJA ....... buen trabajo'
+                } else if (distanciaRoja<30){
+                    return 'Atento y ojo visor, parece que el submarino del area ROJA esta bastante cerca ....'
+                } else if (distanciaRoja<60){
+                    return 'Algo detecta el sonar el el area ROJA pero puede ser una ballena, sigue buscando .....'
+                } else if (distanciaRoja<100){
+                    return 'Estamos lejos de detectar alguna se;al en el area ROJA, prueba ambas areas a ver cual es la que da mejor resultado .....'
+                } else if (distanciaRoja<200){
+                    return 'Definitivamente algo estas haciendo mal, no se oye nada en el sonar .... sigue buscando em ambas areas'
+                } else return 'Ni idea de encontrar el submarino enla zona ROJA'
+            };
+
+            let traerayuda2=distanciaAzul=>{
+                if (distanciaAzul<15){
+                    return 'Finalmemnte encontraste a ese pinche Submarino en el area AZUL ....... buen trabajo'
+                } else if (distanciaAzul<30){
+                    return 'Atento y ojo visor, parece que el submarino del area AZUL esta bastante cerca ....'
+                } else if (distanciaAzul<60){
+                    return 'Algo detecta el sonar el el area AZUL pero puede ser una ballena, sigue buscando .....'
+                } else if (distanciaAzul<100){
+                    return 'Estamos lejos de detectar alguna se;al en el area AZUL, prueba ambas areas a ver cual es la que da mejor resultado .....'
+                } else if (distanciaAzul<200){
+                    return 'Definitivamente algo estas haciendo mal, no se oye nada en el sonar .... sigue buscando em ambas areas'
+                } else return 'Ni idea de encontrar el submarino enla zona AZUL'
+            };
+
+            let click = 0;
+            radar.addEventListener('click', (event) => {
+                click++;
+                let distanciaRoja = traerdistancia1(event, subRojo);
+                let distanciaAzul = traerdistancia2(event, subAzul);
+                let ayudaRoja = traerayuda1(distanciaRoja);
+                let ayudaAzul = traerayuda2(distanciaAzul);
+                p1.innerHTML = ayudaRoja;
+                p2.innerHTML = ayudaAzul;
+
+                if (distanciaRoja < 15) {
+                    alert('Lograste destruir al submarino en la zona ROJA .... ' + click + ' clicks, felicidades ....');
+                }
+                if (distanciaAzul < 15) {
+                    alert('Lograste destruir al submarino en la zona AZUL .... ' + click + ' clicks, felicidades ....');
+                }
+            });
+        </script>
+    </body>
+</html>
