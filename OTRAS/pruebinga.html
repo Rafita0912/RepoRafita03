@@ -4,8 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
+   
+    <title>Programacion Lineal</title>
+   
+     <script >
+   
+   function vertice()
+   
+     {
+   
+        var ax=[0,0,0,0,0,0] , by=[0,0,0,0,0,0] , cc=[0,0,0,0,0,0] , des=[0,0,0,0,0,0];
+   
+        var D=["<=",">=","<",">"];
+   
+        fx=document.rest.fx.value;fy=document.rest.fy.value;    
+   
+        for(i=1;i<7;i++)
+   
+            {  ax[i]=document.rest[4*i-2].value;
+   
+               by[i]=document.rest[4*i-1].value;
+   
+               des[i]=document.rest[4*i].selectedIndex;
+   
+               cc[i]=document.rest[4*i+1].value                    }
+   
+        rs1=document.rest.rest1.value ; rs2=document.rest.rest2.value ;
+   
+        a=ax[rs1] ; b=by[rs1] ; c=cc[rs1] ; d=ax[rs2] ; e=by[rs2] ; f=cc[rs2];
+   
+        vx=(c*e-b*f)/(a*e-b*d);vy=(a*f-c*d)/(a*e-b*d);fxy=fx*vx+fy*vy;
+   
+        document.rest.vx.value=vx ; document.rest.vy.value=vy ;
+   
+        document.rest.fxy.value=fxy;
+   
+        cumplerest=true;   
+   
+        for(i=1 ; i<7 ; i++)
+   
+            {  cumplerest= cumplerest && eval(ax[i]*vx+by[i]*vy+D[des[i]]+cc[i])   }
+   
+        document.rest.cumple.value=cumplerest ;
+   
+       }
+   
+    </script>
+   
+    </head>
+   
     
+   
+   <body text=white bgcolor=blue>
+   
+   <form name="rest">
+   
+   FUNCIÓN OBJETIVO...........
+   
+   F(x,y)=<input type="text" name="fx" size="3">x+<input type="text" name="fy" size="3">y<HR>
+   
+   RESTRICCIONES<HR>
+   
+   1...<input type="text"  value=0 size="3">x+<input type="text"  value=0 size="3">y=
+   
+   <select type="text" name="r1" > <option selected><=  <option >>=   <option ><   <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><BR>
+   
+   2...<input type="text"  value=0 size="3">x+<input type="text"  value=0 size="3">y=
+   
+   <select name="r2" >  <option selected><=  <option >>=  <option ><  <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><BR>
+   
+   3...<input type="text" value=0 size="3">x+<input type="text" value=0 size="3">y=
+   
+   <select name="r3" >  <option selected><=  <option >>=  <option ><  <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><BR>
+   
+   4...<input type="text"  value=0 size="3">x+<input type="text"  value=0 size="3">y=
+   
+   <select name="r4" >  <option selected><=  <option >>=  <option ><  <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><BR>
+   
+   5...<input type="text"  value=0 size="3">x+<input type="text"  value=0 size="3">y=
+   
+   <select name="r5" >  <option selected><=  <option >>=  <option ><  <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><BR>
+   
+   6...<input type="text"  value=0 size="3">x+<input type="text"  value=0 size="3">y=
+   
+   <select name="r6" >  <option selected><=  <option >>=  <option ><  <option >>  </select>
+   
+   <input type="text"  value=0 size="3"><HR>
+   
+   Vértice determinado por las restricciones....
+   
+   <input type="text" name="rest1"  value=1 size="1"> y <input type="text" name="rest2"  value=2 size="1">
+   
+   (introducir nº de restriccion)<HR><input type="button" value="Hallar vertice" Onclick="vertice()">
+   
+   x=<input type="text" name="vx" size="3">y=<input type="text" name="vy" size="3">
+   
+   <BR>¿Cumple las restricciones?.........<input type="text" name="cumple" size="3"><BR>
+   
+   Valor de la función objetivo.......<input type="text" name="fxy" size="3">     
+   
+     </form>
 </body>
 </html>
