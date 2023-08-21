@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>SELECCIONA LA OPCION DE VENTANA QUE NECESITAS CONSTRUIR </h1>
+    <img src="./OPCIONES.jpg" alt="" id="opciones">
+    <input type="text" id="altura" placeholder="Altura en mm.">
+    <input type="text" id="ancho" placeholder="Ancho en mm.">
+    <input type="text" id="opcion" placeholder="OPCION :   A   B   C ">
+    <button> Calcular COSTO DE LA VENTANA </button>
+    <script>
+        const opcion=document.querySelector('#opcion')
+        const altura=document.querySelector('#altura')
+        const ancho=document.querySelector('#ancho')
+        const button=document.querySelector('button')
+        button.addEventListener('click',()=>{
+    switch (opcion) { 
+        case "A": {   
+        let costoA
+         costoA= altura.value * ancho.value * 62
+         alert(`El costo de tu ventana de 2 hojas es de $us : ${costoA.toFixed(3)}`)
+         console.log(costoA)        
+        }
+        break;
+
+        case "B": {
+        let costoB
+        costoB= altura.value * ancho.value * 69
+         alert(`El costo de tu ventana de 3 hojas es de $us : ${costoB.toFixed(3)}`)
+         console.log(costoB)         
+        }
+        break;
+
+        case "C": {
+        let costoC
+        costoC= altura.value * ancho.value * 75
+         alert(`El costo de tu ventana de 4 hojas es de $us : ${costoC.toFixed(3)}`)
+         console.log(costoC)         
+        }
+        break;
+        default: { alert(` INTRODUCE ME MANERA CORRECTA TU OPCION ..... `); }
+    }})
+    </script>
+</body>
+</html>
