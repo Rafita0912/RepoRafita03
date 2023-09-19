@@ -1,0 +1,92 @@
+body{
+    background: url(i1.jpg);
+    background-position: center;
+    background-attachment: contain;
+    background-size: cover;
+}
+h1{
+    display: inline-block;
+    justify-content: space-around;
+    background: aqua;
+    color: blue;
+    padding: 5px;
+}
+h1:hover{
+    background: brown;
+    color:honeydew;
+}
+h2{
+    display: inline-block;
+    display: flex;
+    justify-content: space-around;
+    background: aquamarine;
+    color: red;
+    padding:5px;
+    display: 60%;
+    width: 50%;
+}
+h2:hover {
+    background: blue;
+    color:azure;
+}
+h3{
+    display:inline-block;
+    display: flex;
+    justify-content: space-around;
+    background: darkkhaki;
+    color:darkorchid;
+    padding: 5px;
+    display: 25%;
+}
+h3:hover{
+    background: black;
+    color: white;
+}
+.colores{
+    display: inline-block;
+    justify-content: space-around;
+    background: aquamarine;
+    color: red;
+    padding: 5px;
+    width: 30%;
+}
+.colores:hover{
+    background: chartreuse;
+    color:chocolate;
+}
+button{
+    background: blue;
+    color:fuchsia;
+}
+button:hover{
+    background: chartreuse;
+    color: blue;
+}
+.padre{
+    background: burlywood;
+    color: blue;
+    width: 20%;
+    margin: 10px;
+    display: flex;
+    padding: 20px;
+}
+.personaje-card {
+    width: 400px;
+    border: 3px solid #df0707;
+    padding: 10px;c
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: auto;
+    width: 20%;
+    display: center;
+}
+
+.personaje-img {
+    max-width: 100%;
+    height: auto;
+}
+@media (max width: 600px){
+
+}

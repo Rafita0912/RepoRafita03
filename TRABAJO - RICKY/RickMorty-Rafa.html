@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <center><h1>Personajes de Rick and Morty</h1></center>
+    <center><h2>DESEAS FILTRAR EL PERSONAJE DE ACUERDO A SUS CARACTERISTICAS O VER UN PERSONAJE ESPECIFICO SI CONOCES SU ID</h2></center>
+    
+    <center><p class="colores">OPCION A = FILTRAR POR SUS CARACTERISTICAS; OPCION B = VER EL PERSONAJE CONOCIENDO SU ID</p></center>
+    <center><input type="text" id="opcion" placeholder="A; B"></center>
+    <center><button id="procesar">PROCESAR</button></center>
+    
+    <div id="resultados"></div>
+    
+    <script>
+        const opcionInput = document.querySelector('#opcion');
+        const buttonProcesar = document.querySelector('#procesar');
+        const resultados = document.querySelector('#resultados');
+        
+        buttonProcesar.addEventListener('click', () => {
+            const opcion = opcionInput.value.trim();
+            
+            if (opcion === 'A') {
+                resultados.innerHTML = `
+                    <center><h3 class="colores">SELECCIONA LA OPCION DE FILTRO DE TUS PERSONAJES --> OPCION A = FILTRAR POR ESTADO; OPCION B = FILTRAR POR GENERO; OPCION C = FILTRAR POR ESPECIE</h3></center>
+                    <center><input type="text" id="filtroOpcion" placeholder="A; B; C"></center>
+                    <center><button id="filtrar">FILTRAR PERSONAJES</button></center>
+                `;
+
+                const filtroOpcionInput = document.querySelector('#filtroOpcion');
+                const buttonFiltrar = document.querySelector('#filtrar');
+
+                buttonFiltrar.addEventListener('click', async () => {
+                    const filtroOpcion = filtroOpcionInput.value.trim();
+
+                    if (filtroOpcion === 'A' || filtroOpcion === 'B' || filtroOpcion === 'C') {
+                        let url = 'https://rickandmortyapi.com/api/character/';
+
+                        switch (filtroOpcion) {
+                            case 'A':
+                                resultados.innerHTML = `
+                                    <center><p class="colores">SELECCIONA TU OPCION: Alive, Dead o Unknown</p></center>
+                                    <center><input type="text" id="filtroOpcion1" placeholder="Alive; Dead; Unknown"></center>
+                                    <center><button id="filtrar1">FILTRAR PERSONAJES</button></center>
+                                `;
+
+                                const filtroOpcionInput1 = document.querySelector('#filtroOpcion1');
+                                const buttonFiltrar1 = document.querySelector('#filtrar1');         
+                                buttonFiltrar1.addEventListener('click', async () => {
+                                    const filtroOpcion1 = filtroOpcionInput1.value.trim();
+                                    let url = 'https://rickandmortyapi.com/api/character/';
+
+                                    switch (filtroOpcion1) {
+                                        case 'Alive':
+                                            url += `?status=alive`;
+                                            break;  
+                                        case 'Dead':
+                                            url += `?status=dead`;
+                                            break;
+                                        case 'Unknown':
+                                            url += `?status=unknown`;
+                                            break;
+                                        default:
+                                            resultados.innerHTML = '<p>OPCIÓN DE FILTRO NO VÁLIDA</p>';
+                                            return;
+                                    }
+
+                                    try {
+                                        const response = await fetch(url);
+                                        const data = await response.json();
+                                        if (data.error) {
+                                            resultados.innerHTML = '<p>No se encontraron personajes.</p>';
+                                        } else {
+                                            mostrarPersonajes(data.results);
+                                        }
+                                    } catch (error) {
+                                        resultados.innerHTML = '<p>Error al obtener datos de la API.</p>';
+                                    }
+                                });
+
+                                break;
+                            case 'B':
+                                resultados.innerHTML = `
+                                    <center><p class="colores">SELECCIONA TU OPCION: Female, Male, Genderless o Unknown</p></center>
+                                    <center><input type="text" id="filtroOpcion2" placeholder="Female, Male, Genderless o Unknown"></center>
+                                    <center><button id="filtrar2">FILTRAR PERSONAJES</button></center>
+                                `;
+
+                                const filtroOpcionInput2 = document.querySelector('#filtroOpcion2');
+                                const buttonFiltrar2 = document.querySelector('#filtrar2');         
+                                buttonFiltrar2.addEventListener('click', async () => {
+                                    const filtroOpcion2 = filtroOpcionInput2.value.trim();
+                                    let url = 'https://rickandmortyapi.com/api/character/';
+
+                                    switch (filtroOpcion2) {
+                                        case 'Female':
+                                            url += `?gender=Female`;
+                                            break;  
+                                        case 'Male':
+                                            url += `?gender=Male`;
+                                            break;
+                                        case 'Genderless':
+                                            url += `?gender=Genderless`;
+                                            break;
+                                        case 'Unknown':
+                                            url += `?gender=Unknown`;
+                                            break;
+                                        default:
+                                            resultados.innerHTML = '<p>OPCIÓN DE FILTRO NO VÁLIDA</p>';
+                                            return;
+                                    }
+
+                                    try {
+                                        const response = await fetch(url);
+                                        const data = await response.json();
+                                        if (data.error) {
+                                            resultados.innerHTML = '<p>No se encontraron personajes.</p>';
+                                        } else {
+                                            mostrarPersonajes(data.results);
+                                        }
+                                    } catch (error) {
+                                        resultados.innerHTML = '<p>Error al obtener datos de la API.</p>';
+                                    }
+                                });
+                                                   
+                                break;
+
+                            case 'C':
+                                resultados.innerHTML = `
+                                    <center><p class="colores">SELECCIONA TU OPCION: Human, Alien</p></center>
+                                    <center><input type="text" id="filtroOpcion3" placeholder="Human, Alien"></center>
+                                    <center><button id="filtrar3">FILTRAR PERSONAJES</button></center>
+                                `;
+                                
+                                const filtroOpcionInput3 = document.querySelector('#filtroOpcion3');
+                                const buttonFiltrar3 = document.querySelector('#filtrar3');         
+                                buttonFiltrar3.addEventListener('click', async () => {
+                                    const filtroOpcion3 = filtroOpcionInput3.value.trim();
+                                    let url = 'https://rickandmortyapi.com/api/character/';
+
+                                    switch (filtroOpcion3) {
+                                        case 'Human':
+                                            url += `?species=Human`;
+                                            break;  
+                                        case 'Alien':
+                                            url += `?species=Alien`;
+                                            break;
+                                        default:
+                                            resultados.innerHTML = '<p>OPCIÓN DE FILTRO NO VÁLIDA</p>';
+                                            return;
+                                    }
+
+                                    try {
+                                        const response = await fetch(url);
+                                        const data = await response.json();
+                                        if (data.error) {
+                                            resultados.innerHTML = '<p>No se encontraron personajes.</p>';
+                                        } else {
+                                            mostrarPersonajes(data.results);
+                                        }
+                                    } catch (error) {
+                                        resultados.innerHTML = '<p>Error al obtener datos de la API.</p>';
+                                    }
+                                });
+
+                                break;
+
+                              // Agregar manejo para los botones de filtrar aquí, similar al código anterior
+                            default:
+                                resultados.innerHTML = '<p>OPCIÓN DE FILTRO NO VÁLIDA</p>';
+                                return;
+                        }                        
+
+                    } else {
+                        resultados.innerHTML = '<p>OPCIÓN DE FILTRO NO VÁLIDA</p>';
+                    }
+                });
+            } else if (opcion === 'B') {
+                resultados.innerHTML = `
+                    <center><p class="colores">INTRODUCE EL No DE ID DE TU PERSONAJE</p></center>
+                    <center><input type="text" id="valor" placeholder="ID"></center>
+                    <center><button id="buscar">BUSCAR PERSONAJE</button></center>
+                `;
+                
+                const valorInput = document.querySelector('#valor');
+                const buttonBuscar = document.querySelector('#buscar');
+                
+                buttonBuscar.addEventListener('click', async () => {
+                    const idNuevo = valorInput.value.trim();
+                    const url = `https://rickandmortyapi.com/api/character/${idNuevo}`;
+                    
+                    try {
+                        const response = await fetch(url);
+                        const data = await response.json();
+                        
+                        if (data.error) {
+                            resultados.innerHTML = '<p>No se encontró el personaje.</p>';
+                        } else {
+                            mostrarPersonajes([data]);
+                        }
+                    } catch (error) {
+                        resultados.innerHTML = '<p>Error al obtener datos de la API.</p>';
+                    }
+                });
+            } else {
+                resultados.innerHTML = '<p>INTRODUCE UNA OPCIÓN VÁLIDA (A O B)</p>';
+            }
+        });
+        
+        function mostrarPersonajes(personajes) {
+            let html = '';
+            
+            for (const personaje of personajes) {
+                
+                html += `
+                    <div class="personaje-card">
+                        <center><h3>${personaje.name}</h3></center>
+                        <center><h3>${personaje.species}</h3></center>
+                        <center><h3>${personaje.gender}</h3></center>
+                        <center><h3>${personaje.status}</h3></center>
+                        <center><img class="personaje-img" src="${personaje.image}" alt="${personaje.name}"></center>
+                    </div>
+                `;
+            }
+            
+            resultados.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
