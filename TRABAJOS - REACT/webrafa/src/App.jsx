@@ -1,36 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Rafa</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="slider.css">
-</head>
-<body>
-    <header>
-        <div class="ancho">
-            <div class="logo">
-                <p> <a href="index.html">Rafael Antequera Caballero</a></p>
-            </div>
-            <nav>
-                <ul>
-                    <li> <a href="index.html">Inicio</a></li>
-                    <li> <a href="experiencia.html">Experiencia</a></li>
-                    <li> <a href="formacion.html">Formación</a></li>
-                    <li> <a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="ancho-letras">
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import './Header.css'
+import Header from './Header'
+import Experiencia from './Experiencia.jsx'
+import Formacion from './Formacion.jsx'
+import Contacto from './Contacto.jsx'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <Header></Header>
+      <div class="ancho-letras">
         <div class="letras-slider">
             <div class="ancho-letras">
-                <img src="./imagenes/rafa.jpg" alt="" id="rafa">
+                <img src="../imagenes/rafa.jpg" alt="" id="rafa"/>
             </div>
             <div class="ancho-letras7">
                 <h1><a href="https://github.com/Rafita0912/RepoRafita03">GITHUB</a></h1>
-                <center><img src="./imagenes/GitHub.jpg" alt="" id="git"></center>
+                <img src="../imagenes/GitHub.jpg" alt="" id="git"/>
             </div>
             <div class="ancho-letras2">
                 <h1>DATOS PERSONALES</h1>
@@ -45,7 +36,7 @@
                 <h2>Registro S.I.B. : A-141</h2>
             </div>
             <div class="ancho-letras3">
-                <h1><a href="experiencia.html">EXPERIENCIA</a></h1>
+                <h1><a href="./Experiencia.jsx">EXPERIENCIA</a></h1>
                 <h2>V&C FINCRIPTO - ( Cochabamba - Bolivia ). Gerente. 01 enero 2021 a la fecha.</h2>
                 <h2>COLEGIO DESPERTAD - ( Cochabamba - Bolivia ). Director Académico Secundaria, Director de Sistemas, Profesor. 01 enero 2014 – 31 de marzo de 2022</h2>
                 <h2>MASERCON SANTA CRUZ  - ( Santa Cruz - Bolivia ). Gerente. 01 septiembre 1999 a la fecha.</h2>
@@ -56,7 +47,7 @@
                 <h2>GRUPO INDUSTRIAL “ MACA - CRISTEMBO - INCOPLAST  “. ( Cochabamba - Bolivia ). Supervisor de calidad, Facilitador proceso calidad total, Instructor proceso calidad total, Encargado del Dpto. de productividad y calidad. 01 septiembre 1993 - 01 enero 1997.</h2>
             </div>
             <div class="ancho-letras4">
-                <h1><a href="formacion.html">FORMACION PROFESIONAL</a></h1>
+                <h1><a href="./Formacion.jsx">FORMACION PROFESIONAL</a></h1>
                 <h2>Ingeniería Industrial ( UNIVALLE – Cochabamba ) 1989 - 1993. Tesis de grado “ Optimización del sistema productivo de Industrias MACA “ 1994. Titulo académico # 00022. Obtención de titulo en provisión nacional 1995.</h2>
                 <h2>Post-Grado Especialidad en Administración Financiera “Mención honorífica“ ( UNIVERSIDAD SANTO TOMAS – La Paz ) 1998.</h2>
                 <h2>Diplomado en educación Socio-Comunitaria ( UNIVERSIDAD CATOLICA BOLIVIANA – Cochabamba ) 2013.</h2>
@@ -66,6 +57,7 @@
             </div>
             <div class="ancho-letras5">
                 <h1>COMPETENCIAS</h1>
+                <h2>TURBO PASCAL</h2>
                 <h2>JAVASCRIPT</h2>
                 <h2>HTML5</h2>
                 <h2>CSS3</h2>
@@ -74,11 +66,8 @@
             </div>
         </div>
     </div>
-    
-    <div id="particles-js"></div>
-    <script src="particles.js"></script>
-    <script src="app.js"></script>
-    <script> src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"</script>
-    <script> src="alto.js"</script>
-</body>
-</html>
+    </>
+  )
+}
+
+export default App

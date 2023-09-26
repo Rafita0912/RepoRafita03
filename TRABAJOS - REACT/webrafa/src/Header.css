@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.salto{
+    display: inline-block;
+}
+header{
+    width: 100%;
+    background: rgba(1, 54, 54, 0.6);
+    height: 70px;
+    position: fixed;
+    z-index: 10px;
+}
+h1{
+    color: red;
+    font-size: 18px;
+    font-family: rale;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+h2{
+    color: white;
+    font-size: 13px;
+    font-family: rale;
+    font-weight: bold;
+    margin: auto;
+    text-justify: distribute;
+
+}
+h3{
+    color: white;
+    font-size: 12px;
+}
+.ancho{
+    width: 100%;
+    height: 70px;
+    /*background: red;*/
+    margin: auto;
+}
+
+.logo{
+    width: 100%;
+    height: 70px;
+    /*background: rgb(112, 112, 143);*/
+    float: left;
+    padding-top: 10px;
+    box-sizing: border-box;
+    margin-top: -320px;
+}
+.logo p a{
+    color: rgb(6, 56, 237);
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: rale;
+    display: inline;
+    }
+.logo p a:hover{
+        color: red;
+    }
+nav ul li{
+    display: inline;
+    margin-top: -320px;
+}
+nav ul li a{
+    color: rgb(223, 14, 14);
+    font-size: 20px;
+    text-decoration: none;
+    padding-left: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: rale;
+    margin-top: -320px;
+}
+nav ul li a:hover{
+    color: blue;
+}
+.ancho-letras{
+    top: 40px;
+    position: absolute;
+    width: 35%;
+    /*background: rgba(20, 20, 20, .5);*/
+    text-align: center;
+    z-index: 1px;
+}
+.letras-slider{
+    width: 80%;
+    margin:auto;
+}
+.letras-slider h2{
+    font-family: rale;
+}
+.ancho-letras img{
+    margin-left: 70px;
+}
+.ancho-letras2{
+    top: 315px;
+    position: absolute;
+    width: 70%;
+    background: rgba(20, 20, 20, .5);
+    text-align: center;
+}
+.ancho-letras3{
+    top: 58px;
+    left: 450px;
+    right: 20px;
+    position: absolute;
+    width: 190%;
+    background: rgba(20, 20, 20, .5);
+    text-align: left;
+}
+.ancho-letras4{
+    top: 320px;
+    left: 450px;
+    right: 20px;
+    position: absolute;
+    width: 190%;
+    background: rgba(20, 20, 20, .5);
+    text-align: left;
+}
+.ancho-letras5{
+    top: 495px;
+    left: 450px;
+    right: 20px;
+    position: absolute;
+    width: 190%;
+    background: rgba(20, 20, 20, .5);
+    text-align: center;
+}
+.ancho-letras6{
+    top: 68px;
+    color: rgb(210, 232, 224);
+    left: 20px;
+    right: 20px;
+    font-family: rale;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    width: 95%;
+    background: rgba(20, 20, 20, .5);
+    text-align: left;
+    z-index: 3px;
+}
+.ancho-letras7{
+    top: 530px;
+    color: rgb(210, 232, 224);
+    left: 120px;
+    right: 20px;
+    font-family: rale;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    width: 40%;
+    background: rgba(20, 20, 20, .5);
+    text-align: center;
+    z-index: 3px;
+}
+.ancho-letras7 h1 a{
+    color: red;
+}
+.ancho-letras3 h1 a{
+    color: red;
+}
+.ancho-letras4 h1 a{
+    color: red;
+}
+.ancho-letras h1:hover{
+    color:blue;
+}
+.ancho-letras2 h1:hover{
+    color:blue;
+}
+.ancho-letras3 h1 a:hover{
+    color:blue;
+}
+.ancho-letras4 h1 a:hover{
+    color:blue;
+}
+.ancho-letras5 h1:hover{
+    color:blue;
+}
+.ancho-letras6 h1:hover{
+    color:blue;
+}
+.ancho-letras7 h1 a:hover{
+    color:blue;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.salto{
+    display: inline-block;
+}
+header{
+    width: 100%;
+    background: rgba(1, 54, 54, 0.6);
+    height: 70px;
+    position: fixed;
+    z-index: 10px;
+}
+.caja-imagen {
+    width: 400px;
+    border: 3px solid #df0707;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: auto;
+    width: 20%;
+    display: center;
+}
+@font-face{
+    font-family: rale;
+    src:url(fuentes/Raleway-Regular.ttf);
+}
