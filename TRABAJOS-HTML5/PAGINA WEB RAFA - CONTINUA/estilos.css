@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.salto{
+    display: inline-block;
+}
+header{
+    width: 100%;
+    background: rgba(1, 54, 54, 0.6);
+    height: 70px;
+    position: fixed;
+    z-index: 10px;
+}
+h1{
+    color: red;
+    font-size: 25px;
+    font-family: rale;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+h2{
+    color: white;
+    font-size: 15px;
+    font-family: rale;
+    font-weight: bold;
+    margin: auto;
+    text-justify: distribute;
+
+}
+h3{
+    color: white;
+    font-size: 12px;
+    display inline;: rale;
+
+}
+.ancho{
+    width: 80%;
+    height: 80px;
+    /*background: red;*/
+    margin: auto;
+}
+
+.logo{
+    width: 100%;
+    height: 80px;
+    /*background: blue;*/
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.logo p a{
+color: rgb(212, 38, 29);
+font-size: 50px;
+text-decoration: none;
+font-weight: bold;
+font-family: rale;
+}
+.logo p a:hover{
+    color: rgb(24, 10, 102);
+}
+nav{
+    width: 55%;
+    height: 70ps;
+    float: left;
+    text-align: right;
+    padding-top: 24px;
+}
+nav ul li{
+    display: inline;
+}
+nav ul li a{
+    color: aliceblue;
+    font-size: 20px;
+    text-decoration: none;
+    padding-left: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: rale;
+}
+nav ul li a:hover{
+    color: blue;
+}
+.caja-imagen {
+    width: 400px;
+    border: 3px solid #df0707;
+    padding: 10px;c
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: auto;
+    width: 20%;
+    display: center;
+}
+@font-face{
+    font-family: rale;
+    src:url(fuentes/Raleway-Regular.ttf);
+}

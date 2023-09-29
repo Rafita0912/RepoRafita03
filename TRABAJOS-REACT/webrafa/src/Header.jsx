@@ -4,9 +4,10 @@ import './Header.css'
 function Header() {
   return (
     <>
-        <div class="ancho">
-            <div class="logo">
-                <p> <a href="https://localhost:5174">Rafael Antequera Caballero</a></p>
+    <header>
+        <div class="ancho1">
+            <div class="logo1">
+                <p> <a href="./App.jsx">Rafael Antequera Caballero</a></p>
             </div>
             <nav>
                 <ul>
@@ -17,6 +18,7 @@ function Header() {
                 </ul>
             </nav>
         </div>
+    </header>
     </>
   )
 }
