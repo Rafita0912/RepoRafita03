@@ -1,0 +1,40 @@
+.dos-columnas{
+    margin-top: 20px;
+}
+.formulario{
+    float: left;
+    width: 50%;
+    margin: auto;;
+    font-size: 20px;
+}
+.formulario h2{
+    font-family: rae;
+    font-weight: bold;
+    color: rgb(234, 104, 12);   
+    -webkit-text-stroke: 1px  rgb(11, 11, 11);
+}
+.caja-1{
+    width: 250px;
+    margin: 10px;
+    height: 20px;
+    padding: 10px;
+    font-size: 14px;
+}
+.caja-2{
+    width: 550px;
+    margin: 10px;
+    height: 20px;
+    padding: 10px;
+    font-size: 14px;  
+}
+.contratar-a{
+    width: 575px;
+    margin: 10px;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px; 
+    font-weight: bold;
+    background: chartreuse;
+    color: rgb(234, 104, 12);   
+    -webkit-text-stroke: 1px  rgb(11, 11, 11);
+}
