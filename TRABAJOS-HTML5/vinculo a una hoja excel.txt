@@ -1,0 +1,17 @@
+
+Hace tiempo hice lo mismo que tú en Google Drive y los cambios de la hoja se hacían automáticamente.
+
+Sigue estos pasos:
+
+Sube tu hoja Excel a Google Drive.
+Cuando se haya cargado, dale doble clic para abrirla.
+En la parte superior, elige la opción Abrir con hojas de cálculo Google.
+Se abrirá en otra ventana, en la parte superior dale clic en Archivo y selecciona la opción Publicar en la web.
+En la ventana que se abre, seleccionar Vincular todo el documento, selecciona Página web.
+En la parte inferior de la ventana hay una opción que dice Contenido publicado, pícale ahí selecciona Todo el documento.
+La parte clave viene aquí: encasilla la opción Volver a publicar automáticamente...
+Al final, dale clic en donde dice Incorporar y te darán el código para poderlo pegar en tu página web.
+Con estos pasos podrás hacer cambios en tiempo real a tu documento desde tu página web.
+
+Espero haberte ayudado.
+

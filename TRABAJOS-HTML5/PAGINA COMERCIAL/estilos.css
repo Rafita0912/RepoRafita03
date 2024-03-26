@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding-bottom: 90px;
+    background: linear-gradient(45deg, rgb(101, 101, 249), blue, red, blue, rgb(99, 239, 143));
+}
+.general{
+    /*background: rgb(145, 175, 195);*/
+}
+header{
+    width: 100%;
+    height: 85px;
+    background: white;
+    position: fixed;
+}
+.ancho{
+    width: 90%;
+    height: 85px;
+    margin: auto;
+}
+.logo{
+    width: 30%;
+    height: 85px;
+    float: left;
+    padding-top: 3px;
+    box-sizing: border-box;
+}
+nav{
+    width: 70%;
+    height: 85px;
+    float: left;
+    text-align: right;
+    padding-top: 24px;
+    box-sizing: border-box;
+}
+nav ul li{
+    display: inline;
+}
+nav ul li a{
+    font-size: 30px;
+    color: rgb(3, 3, 233);
+    padding-left: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: rale;
+}
+nav ul li a:hover{
+    color: red;
+}
+footer{
+    background: rgb(255, 255, 255);
+    margin: auto;
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+}
+footer nav{
+    width: 100%;
+    height: 90px;
+    float: left;
+    text-align: center;
+    padding-top: 6px;
+    box-sizing: border-box;
+}
+footer nav ul li{
+    width: 33%;
+    display: inline;
+    float: left;
+}
+footer nav ul li a{
+    font-size: 16px;
+    color: rgb(153, 23, 13);
+    padding-left: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: alfa;
+    text-align: center;
+}
+footer nav ul li a:hover{
+    color: red;
+}
+footer nav ul li p{
+        font-size: 16px;
+        color: rgb(3, 3, 233);
+        padding-left: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-family: alfa;
+        text-align: center;
+}
+.abc1{
+    width: 100%;
+    align-content: center;
+    float: left;
+}
+.fila1{
+    width: 100%;
+    align-content: center;
+    float: left;
+    display: block;
+    margin: auto;
+}
+.columnasx5gal{
+    width: 25%;
+    float: left;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    padding-top: 90px;
+    font-family: alfa;
+    margin: auto;
+    margin-top: 0px;
+    font-size: 0px;
+    color: rgb(236, 68, 12);
+    -webkit-text-stroke: 2px  rgb(11, 11, 11);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+.columnasx5gal1{
+    width: 25%;
+    float: left;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    padding-top: 2px;
+    font-family: alfa;
+    margin: auto;
+    margin-top: 0px;
+    font-size: 0px;
+    color: rgb(236, 68, 12);
+    -webkit-text-stroke: 2px  rgb(11, 11, 11);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+@font-face{
+    font-family: rale;
+    src: url(fuentes/Raleway-Regular.ttf);
+
+    font-family: alfa;
+    src: url(fuentes/AlfaSlabOne-Regular.ttf);
+}
