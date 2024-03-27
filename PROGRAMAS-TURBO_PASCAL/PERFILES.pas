@@ -8,9 +8,9 @@ OPA,OPA1,OPA2,VEN,DE:STRING;
 PROCEDURE DATOS;
 BEGIN
      CLRSCR;
-     WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
-     WRITELN('     ###  INDUSTRIAS MACA Ltda.  ###  | autor : Rafael Antequera Caballero |');
-     WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
+     WRITELN('     +++++++++++++++++++++++++++++++--------------------------------------');
+     WRITELN('     #  INDUSTRIAS MACA Ltda.  #  | autor : Rafael Antequera Caballero |')
+     WRITELN('     +++++++++++++++++++++++++++++++--------------------------------------');
      GOTOXY(5,5);
      WRITELN;
      WRITELN('              ####################################################');
@@ -129,7 +129,7 @@ PROCEDURE RESUMEN;
      WRITELN(LST,'    Felpa  7 x 7                          ',U[3]:5:2,' [mt]    ',C[3]:5:2,' [$us]');
      WRITELN(LST,'    Felpa  7 x 5                          ',U[4]:5:2,' [mt]    ',C[4]:5:2,' [$us]');
      WRITELN(LST,'    Felpa  5 x 5                          ',U[5]:5:2,' [mt]    ',C[5]:5:2,' [$us]');
-     WRITELN(LST,'    Mano de obra                                        ',MOT:5:2,' [$us]');
+     WRITELN(LST,'    Mano de obra                                       ',MOT:5:2,' [$us]');
      WRITELN(LST);
      WRITELN(LST,'         ACCESORIOS');
      WRITELN(LST);
