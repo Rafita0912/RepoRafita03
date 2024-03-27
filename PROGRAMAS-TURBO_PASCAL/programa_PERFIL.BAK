@@ -14,19 +14,19 @@ PROCEDURE DATOS;
 BEGIN
      CLRSCR;
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
-     WRITELN('     ²±°  INDUSTRIAS MACA Ltda   °±²  | autor : Rafael Antequera Caballero |');
+     WRITELN('     ###  INDUSTRIAS MACA Ltda   ###  | autor : Rafael Antequera Caballero |');
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
      WRITELN;
-     WRITELN('              °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('              °±²Û                                                    °±²Û');
-     WRITELN('              °±²Û            DATOS GENERALES DEL PROBLEMA            °±²Û');
-     WRITELN('              °±²Û                                                    °±²Û');
-     WRITELN('              °±²Û    IDENTIFICACION O CODIGO DE LA BARRA..:          °±²Û');
-     WRITELN('              °±²Û    LONGITUD DE LA BARRA EN METROS.......:          °±²Û');
-     WRITELN('              °±²Û    EL DESPERDICIO ACEPTADO EN METROS....:          °±²Û');
-     WRITELN('              °±²Û                                                    °±²Û');
-     WRITELN('              °±²Û                    by R.A.C                        °±²Û');
-     WRITELN('              °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
+     WRITELN('              ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('              ####                                                    ####');
+     WRITELN('              ####            DATOS GENERALES DEL PROBLEMA            ####');
+     WRITELN('              ####                                                    ####');
+     WRITELN('              ####    IDENTIFICACION O CODIGO DE LA BARRA..:          ####');
+     WRITELN('              ####    LONGITUD DE LA BARRA EN METROS.......:          ####');
+     WRITELN('              ####    EL DESPERDICIO ACEPTADO EN METROS....:          ####');
+     WRITELN('              ####                                                    ####');
+     WRITELN('              ####                    by R.A.C                        ####');
+     WRITELN('              ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
      WRITELN;
      GOTOXY(62,9);
      READLN(TIPO);
@@ -38,7 +38,7 @@ BEGIN
      N:=0;J:=0;
      WRITELN('           A CONTINUACION PROPORCIONAR LOS SIGUIENTES DATOS :');
      WRITELN;
-     WRITELN('        ±±±²²²°°°±±±²²²°°°±±±²²²°°°±±±²²²°°°±±±²²²°°°±±±²²²°°°');
+     WRITELN('        ######################################################');
      REPEAT
      J:=J+1;
      WRITE('                  LA MEDIDA [',J,'] EN METROS : ');
@@ -90,26 +90,26 @@ BEGIN
      REPEAT
      CLRSCR;
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
-     WRITELN('     ²±°  INDUSTRIAS MACA Ltda   °±²  | autor : Rafael Antequera Caballero |');
+     WRITELN('     ###  INDUSTRIAS MACA Ltda   ###  | autor : Rafael Antequera Caballero |');
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
      WRITELN;
      WRITELN('                               OPCIONES DE MODIFICACION');
      WRITELN;
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                                °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                      MENU                      °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                                °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û           1 . - BORRAR DATOS                   °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û           2 . - COMPROBAR Y MODIFICAR DATOS    °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û           3 . - A¥ADIR MAS DATOS               °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û           4 . - SALIR AL MENU PRINCIPAL        °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                                °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                      by R.A.C  °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                                ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                      MENU                      ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                                ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###           1 . - BORRAR DATOS                   ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###           2 . - COMPROBAR Y MODIFICAR DATOS    ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###           3 . - A#ADIR MAS DATOS               ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###           4 . - SALIR AL MENU PRINCIPAL        ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                                ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                      by R.A.C  ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
      WRITELN;
      WRITE('                                 SU OPCION ES :');
      READLN(OP);
@@ -285,7 +285,7 @@ BEGIN
                                  SEEK(POS,I);READ(POS,RAC1);
                                  RAC1:=CONCAT(RAC1,CAD,',');
                                  SEEK(POS,N+R);WRITE(POS,RAC1);
-                                 WRITELN('                           ²±°Û  ',RAC1,'    ');
+                                 WRITELN('                           ####  ',RAC1,'    ');
                             END;
                        END;
                        IF ((BA-RAC)>=0) AND ((BA-RAC)<=DESP) THEN
@@ -336,7 +336,7 @@ BEGIN
          END;
      CLRSCR;
      RACOSO:=BA-RACOSO;
-     WRITELN('               ±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°');
+     WRITELN('               #################################');
      GOTOXY(10,5);
      WRITELN('     PERFIL CODIGO  ',TIPO,'  BARRA   #   :   ',NB);
      GOTOXY(10,7);
@@ -507,7 +507,7 @@ BEGIN
                                  SEEK(POS,I);READ(POS,RAC1);
                                  RAC1:=CONCAT(RAC1,CAD,',');
                                  SEEK(POS,N+R);WRITE(POS,RAC1);
-                                 WRITELN('                           ²±°Û  ',RAC1,'    ');
+                                 WRITELN('                           ####  ',RAC1,'    ');
                             END;
                        END;
                        IF ((BA-RAC)>=0) AND ((BA-RAC)<=DESP) THEN
@@ -705,7 +705,7 @@ BEGIN
                                  SEEK(POS,I);READ(POS,RAC1);
                                  RAC1:=CONCAT(RAC1,CAD,',');
                                  SEEK(POS,N+R);WRITE(POS,RAC1);
-                                 WRITELN('                           ²±°Û  ',RAC1,'    ');
+                                 WRITELN('                           ####  ',RAC1,'    ');
                             END;
                        END;
                        IF ((BA-RAC)>=0) AND ((BA-RAC)<=DESP) THEN
@@ -752,7 +752,7 @@ BEGIN
          END;
      RACOSO:=BA-RACOSO;
      WRITELN(LST);WRITELN(LST);
-     WRITELN(LST,'                    ±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°');
+     WRITELN(LST,'                    #################################');
      WRITELN(LST);WRITELN(LST);
      WRITELN(LST,'                PERFIL CODIGO  ',TIPO,'  BARRA   #   :   ',NB);
      WRITELN(LST);
@@ -818,7 +818,7 @@ BEGIN
      BEGIN
      NB:=NB+1;
      WRITELN(LST);WRITELN(LST);
-     WRITELN(LST,'                 ±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°');
+     WRITELN(LST,'                 #################################');
      WRITELN(LST);WRITELN(LST);
      WRITELN(LST,'                 PERFIL CODIGO   ',TIPO,'  BARRA   #   :   ',NB);
      WRITELN(LST);
@@ -839,7 +839,7 @@ BEGIN
      WRITELN(LST);WRITELN(LST);
      WRITELN(LST,'                        optimizado por R.A.C.');
      WRITELN(LST);WRITELN(LST);
-     WRITELN(LST,'                 ±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°');
+     WRITELN(LST,'                 #################################');
      WRITELN(LST);WRITELN(LST);
      WRITELN(LST,'               EL NUMERO OPTIMO DE BARRAS A CORTAR ES :  ',NB);
      WRITELN(LST);
@@ -855,7 +855,7 @@ BEGIN
      WRITELN(LST);WRITELN(LST);
      WRITELN(LST,'                         optimizado por R.A.C.');
      WRITELN(LST);WRITELN(LST);
-     WRITELN(LST,'                 ±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°±²°');
+     WRITELN(LST,'                 #################################');
      END;
      FOR I:=1 TO K DO
      BEGIN
@@ -871,10 +871,10 @@ BEGIN
               FOR J:=1 TO 25 DO
                   BEGIN
                        GOTOXY(I,J);
-                       WRITE('°');
+                       WRITE('#');
                        K:=78-I;L:=26-J;
                        GOTOXY(K,L);
-                       WRITE('±');
+                       WRITE('#');
                   END;
          END;
      FOR J:=1 TO 25 DO
@@ -882,7 +882,7 @@ BEGIN
               FOR I:=1 TO 79 DO
                   BEGIN
                        GOTOXY(I,J);
-                       WRITE('²');
+                       WRITE('#');
                   END;
          END;
      GOTOXY(3,3);
@@ -893,13 +893,13 @@ BEGIN
      WRITE('DERECHOS RESERVADOS');
      GOTOXY(35,14);
      WRITE(' P E R F I L ');
-     GOTOXY(37,16);WRITE('°°±±°±±°°');
-     GOTOXY(37,17);WRITE('±± RAC ±±');
-     GOTOXY(37,18);WRITE('°°±±°±±°°');
+     GOTOXY(37,16);WRITE('#########');
+     GOTOXY(37,17);WRITE('## RAC ##');
+     GOTOXY(37,18);WRITE('#########');
      GOTOXY(26,20);
-     WRITE('INGRESE²LA²CLAVE²PARA²CONTINUAR');
+     WRITE('INGRESE#LA#CLAVE#PARA#CONTINUAR');
      GOTOXY(35,22);
-     WRITE('[±±±±±±±±±±±]');
+     WRITE('[###########]');
      GOTOXY(36,22);
      READLN(PASW);
 END;
@@ -911,27 +911,27 @@ BEGIN
      REPEAT
      CLRSCR;
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
-     WRITELN('     ²±°  INDUSTRIAS MACA Ltda   °±²  | autor : Rafael Antequera Caballero |');
+     WRITELN('     ###  INDUSTRIAS MACA Ltda   ###  | autor : Rafael Antequera Caballero |');
      WRITELN('     +++++++++++++++++++++++++++++++  --------------------------------------');
      WRITELN;
      WRITELN('            PROGRAMA PARA OPTIMIZACION DE CORTES DE BARRAS O PERFILES');
      WRITELN;
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                                °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                      MENU                      °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                                °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      1 . - INTRODUCIR DATOS                    °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      2 . - MODIFICAR DATOS                     °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      3 . - PROCESAR PASO A PASO Y NO IMPRIMIR  °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      4 . - PROCESAR E IMPRIMIR TODO            °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      5 . - PROCESAR E IMPRIMIR SOLO EL RESUMEN °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      6 . - IMPRIMIR RESUMEN (solo si ya fu‚    °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û         procesada la informaci¢n anteriormente)°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û      7 . - SALIR                               °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û                                      by R.A.C  °±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('     °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                                ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                      MENU                      ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                                ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      1 . - INTRODUCIR DATOS                    ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      2 . - MODIFICAR DATOS                     ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      3 . - PROCESAR PASO A PASO Y NO IMPRIMIR  ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      4 . - PROCESAR E IMPRIMIR TODO            ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      5 . - PROCESAR E IMPRIMIR SOLO EL RESUMEN ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      6 . - IMPRIMIR RESUMEN (solo si ya fu#    ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###         procesada la informaci#n anteriormente)###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###      7 . - SALIR                               ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°###                                      by R.A.C  ###Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('     ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
      WRITELN;
      WRITE('                                 SU OPCION ES :');
      READLN(OP);
@@ -956,11 +956,11 @@ BEGIN
             CLRSCR;
      WRITELN;WRITELN;WRITELN;WRITELN;WRITELN;
      WRITELN;WRITELN;WRITELN;WRITELN;WRITELN;
-     WRITELN('             °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('             °±²Û                                                °±²Û');
-     WRITELN('             °±²Û     GRACIAS POR HACER USO DE ESTE PROGRAMA     °±²Û');
-     WRITELN('             °±²Û                         atte   R.A.C.          °±²Û');
-     WRITELN('             °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
+     WRITELN('             ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('             ####                                                ####');
+     WRITELN('             ####     GRACIAS POR HACER USO DE ESTE PROGRAMA     ####');
+     WRITELN('             ####                         atte   R.A.C.          ####');
+     WRITELN('             ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
      WRITELN;
        END;
      END;
@@ -971,11 +971,11 @@ BEGIN
      CLRSCR;
      WRITELN;WRITELN;WRITELN;WRITELN;WRITELN;
      WRITELN;WRITELN;WRITELN;WRITELN;WRITELN;
-     WRITELN('             °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
-     WRITELN('             °±²Û                                                °±²Û');
-     WRITELN('             °±²Û ESTE PROGRAMA ES PRIVADO, POR FAVOR NO MOLESTE °±²Û');
-     WRITELN('             °±²Û                         atte   R.A.C.          °±²Û');
-     WRITELN('             °±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û°±²Û');
+     WRITELN('             ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
+     WRITELN('             ####                                                ####');
+     WRITELN('             #### ESTE PROGRAMA ES PRIVADO, POR FAVOR NO MOLESTE ####');
+     WRITELN('             ####                         atte   R.A.C.          ####');
+     WRITELN('             ###Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°##Û°###');
      WRITELN;
      END;
 READLN;
