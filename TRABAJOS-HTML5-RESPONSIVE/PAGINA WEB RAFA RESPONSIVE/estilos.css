@@ -7,8 +7,23 @@
     margin: 0;
     padding: 0;
 }
+h1{
+    text-size-adjust: 50%;
+    text-align: center;
+    font-family: conce;
+    font-size: 35px;
+}
+p{
+    text-align: center;
+    font-family: patu;
+    font-size: 25px;
+}
 
 @font-face{
     font-family: rale;
     src:url(fuentes/Raleway-Regular.ttf);
+    font-family: patu;
+    src: url(fuentes/PatuaOne-Regular.ttf);
+    font-family: conce;
+    src: url(fuentes/ConcertOne-Regular.ttf);
 }
