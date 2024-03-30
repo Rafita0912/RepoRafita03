@@ -1,11 +1,9 @@
-*{
+.container{
     background: url(imagenes/f3.jpg);
     background-position: center;
     background-attachment: contain;
     background-size: cover;
     width: 100%;
-    margin: 0;
-    padding: 0;
 }
 h1{
     text-size-adjust: 50%;
@@ -21,12 +19,19 @@ h2{
     font-size: 25px;
     color: beige;
 }
+h4{
+    text-size-adjust: 50%;
+    font-family: conce;
+    font-size: 35px;
+    color: blue;
+    text-align: center;
+}
 h3 a{
     text-size-adjust: 50%;
-    text-align: center;
+    padding-left: 20%;
     font-family: conce;
     font-size: 25px;
-    color: beige;
+    color: red;
     margin: auto;
 }
 p{
@@ -45,13 +50,18 @@ p a{
     line-height: 10px;
 }
 li a{
-    text-align: left;
-    font-family: patu;
+    font-family: conce;
     font-size: 25px;
     vertical-align: middle;
-    text-align: center;
     color: white;
     line-height: 90px;
+    padding-top: 15px;
+    text-align: center;
+    margin-left: 15px;
+}
+ul{
+    margin-left: 10%;
+    text-decoration-thickness: none;
 }
 .img1{
     width: 60%;
