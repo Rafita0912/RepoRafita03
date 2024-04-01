@@ -1,0 +1,41 @@
+.container{
+    background-image: url("../imagenes/fondo3.jpeg");
+    background-position: center;
+    background-attachment: contain;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+h1{
+    color: red;
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+img{
+    width: 70%;
+    align-items: center;
+    padding-top: 3%;
+    padding-left: 15%;
+    padding-bottom: 3%;
+    opacity: 1;
+}
+img{
+    width: 100%;
+    align-items: center;
+    opacity: 1;
+}
+.lista{
+    padding-top: 30px;
+    font-family: rale;
+}
+@font-face{
+    font-family: rale;
+    src:url(fuentes/Raleway-Regular.ttf);
+    font-family: alfa;
+    src:url(fuentes/AlfaSlabOne-Regular.ttf);
+    font-family: concert;
+    src:url(fuentes/Raleway-Regular);
+}
