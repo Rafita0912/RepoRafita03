@@ -1,24 +1,67 @@
 .container{
-    background-image: url("../imagenes/fondo3.jpeg");
+    background-image: url("../imagenes/fondo6.jpeg");
     background-position: center;
     background-attachment: contain;
     background-size: cover;
     width: 100%;
     height: auto;
-    opacity: 0.8;
+    opacity: 0.95;
+}
+.header{
+    background-image: url("../imagenes/fondo2.jpeg");
+    background-position: center;
+    background-attachment: contain;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+}
 h1{
-    color: red;
-    font-size: 60px;
+    color: grey;
+    font-size: 55px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     margin: auto;
     text-align: center;
 }
+h2{
+    color: white;
+    font-size: 45px;
+    font-family: alfa, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+h3{
+    color: black;
+    font-size: 38px;
+    font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+h3{
+    color: black;
+    font-size: 38px;
+    font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+li a{
+    color: white;
+    font-size: 25px;
+    font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
 img{
-    width: 70%;
+    width: 90%;
     align-items: center;
     padding-top: 3%;
-    padding-left: 15%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-bottom: 3%;
     opacity: 1;
 }
@@ -28,14 +71,28 @@ img{
     opacity: 1;
 }
 .lista{
-    padding-top: 30px;
+    padding-top: 25px;
     font-family: rale;
+}
+.movies{
+    padding: 50px 0 150px 0;
+}.swiper{
+    width: 100%;
+}
+.swiper-slide{
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+}
+.swiper-slide img{
+    display: block;
+    width: 100%;
 }
 @font-face{
     font-family: rale;
-    src:url(fuentes/Raleway-Regular.ttf);
+    src:url(../fuentes/AlfaSlabOne-Regular.ttf);
     font-family: alfa;
-    src:url(fuentes/AlfaSlabOne-Regular.ttf);
+    src:url(../fuentes/ConcertOne-Regular.ttf);
     font-family: concert;
-    src:url(fuentes/Raleway-Regular);
+    src:url(../fuentes/Raleway-Regular.ttf);
 }

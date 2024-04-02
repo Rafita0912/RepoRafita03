@@ -7,11 +7,16 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./estilos/estilos.css">
 
 </head>
 <body>
-    <header class="container">
+    <header class="container header">
         <div class="row">
             <div class="col-12 col-lg-3">
                 <div class="logo">
@@ -22,16 +27,16 @@
                 <nav>
                     <ul class="d-flex justify-content-around lista">
                         <li> <a href="index.html">Inicio</a></li>
-                        <li> <a href="instalaciones.html">Instalaciones</a></li>
-                        <li> <a href="galeria.html">Galería</a></li>                        
-                        <li> <a href="servicios.html">Servicios</a></li>
-                        <li> <a href="contacto.html">Contacto</a></li>
+                        <li> <a href="#instalaciones">Instalaciones</a></li>
+                        <li> <a href="#galeria">Galería</a></li>                        
+                        <li> <a href="#servicios">Servicios</a></li>
+                        <li> <a href="#contacto">Contacto</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-12 col-lg-2 d-flex justify-content-around">
                 <div class="col-4 border border-secondary border-4 rounded-4">
-                    <h1><a href="https://api.whatsapp.com/send?phone=059170841088&text=Hola, soy Benjamín, te doy la bienvenida a esta gran familia de Beast's house GYM, dime en que te puedo ayudar ??? ...."><center><img src="./imagenes/whatsapp.svg"  class="img-fluid" alt="wha"></center></a></h1>
+                    <h1><a href="https://api.whatsapp.com/send?phone=+59170841088&text=Hola, soy Benjamín, te doy la bienvenida a esta gran familia de Beast's house GYM, dime en que te puedo ayudar ??? ...."><center><img src="./imagenes/whatsapp.svg"  class="img-fluid" alt="wha"></center></a></h1>
                     
                 </div>
                 <div class="col-4 border border-secondary border-4 rounded-4">
@@ -40,28 +45,118 @@
             </div>
         </div>
     </header>
-    <section class="pie">
-
-    </section>
 <section class="container">
     <section class="row">
         <div class="col-12 col-lg-4 justify-content-around rounded">
-            <img src="./imagenes/head1.jpeg"  class="img-fluid rounded-end-circle" alt="head1">
+            <img src="./imagenes/head1.jpeg"  class="img-fluid rounded-start-pill" alt="head1">
+        </div>
+        <div class="col-12 col-lg-4 justify-content-around rounded">
+            <br><h1>BIENVENIDOS</h1> <br>
+            <h2>El lugar donde todos somos familia.</h2>
         </div>
         <div class="col-12 col-lg-4 d-flex justify-content-around rounded">
-            <h1>BIENVENIDOS <br> El lugar donde todos somos familia.</h1>
+            <img src="./imagenes/head2.jpeg"  class="img-fluid rounded-end-circle" alt="head2">
         </div>
         <div class="col-12 col-lg-4 d-flex justify-content-around rounded">
-            <img src="./imagenes/head2.jpeg"  class="img-fluid rounded-start-pill" alt="head2">
+            <h2>La perseverancia es la clave del éxito.</h2>
         </div>
-        <div class="col-12 col-lg-6 d-flex justify-content-around rounded">
-            <h1>La perseverancia es la clave del éxito.</h1>
+        <div class="col-12 col-lg-4 d-flex justify-content-around rounded">
+            <img src="./imagenes/head3.jpeg"  class="img-fluid rounded-5" alt="head3">
         </div>
-        <div class="col-12 col-lg-6 d-flex justify-content-around rounded">
-            <img src="./imagenes/head3.jpeg"  class="img-fluid rounded-end-circle" alt="head3">
+        <div class="col-12 col-lg-4 d-flex justify-content-around rounded-circle">
+            <h2>No te conformes con lo que tienes, lucha por lo que quieres.</h2>
         </div>
     </section>
 </section>
+<section class="container">
+    <section class="row">
+        <div class="col-12 d-flex justify-content-around" id="instalaciones">
+            <br><h1>INSTALACIONES</h1><br>
+        </div>
+        <div class="col-12 d-flex justify-content-around">
+            <h3>Bienvenidos a Home Gym Beast House! somos un centro de entrenamiento dedicado a ayudarte a lograr tus objetivos de salud y fitnnes. En nuestro pequeño pero acogedor gimnasio, nos enfocamos en brindar clases personalizadas y adaptadas a tus necesidades individuales. </h3>
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-around rounded-circle">
+            <img src="./imagenes/gym1.jpg" alt="head1">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-around rounded-circle">
+            <img src="./imagenes/gym2.jpg" alt="head2">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-around rounded-circle">
+            <img src="./imagenes/gym5.jpg" alt="head1">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-around rounded-circle">
+            <img src="./imagenes/gym7.jpg" alt="head2">
+        </div>
+    </section>
 </section>
+<section class="container">
+    <section class="row">
+        <div class="col-12 d-flex justify-content-around" id="servicios">
+            <h1>SERVICIOS</h1>
+        </div>
+        <div class="col-12 col-lg-4 justify-content-around rounded-circle">
+            <h3>PREPARACIÓN FÍSICA DIRIGIDA Y PERSONALIZADA.</h3>
+            <h4>Un plan de entrenamiento personalizado es uno de los servicios deportivos más demandados actualmente. La figura del Personal Trainer gana cada día más adeptos por la eficacia de sus rutinas de entrenamiento, supervisadas continuamente por un profesional de la salud y el deporte.</h4>
+        </div>
+        <div class="col-12 col-lg-4 justify-content-around rounded-circle">
+            <h3>MANTENIMIENTO FÍSICO.</h3>
+            <h4>El mantenimiento físico es un concepto que surge desde la premisa de que el ser humano no es sedentario. Su naturaleza le exige desplazarse, en mayor o menor medida. Además de una serie de ejercicios y movimientos que le ayudan a mejorar su salud. La finalidad del mantenimiento es la de conservar un estado físico saludable. Por lo tanto, el tipo de ejercicio estará determinado por cómo se encuentre la persona que la practica.</h4>
+        </div>
+        <div class="col-12 col-lg-4 justify-content-around rounded-circle">
+            <h3>ASESORÍA NUTRICIONAL PARA DEPORTISTAS</h3>
+            <h4>La alimentación no necesariamente significa nutrición. La alimentación es un proceso donde ingerimos múltiples provisiones de forma voluntaria y que puede aprenderse con el tiempo. Una vez que consumimos los distintos alimentos, la nutrición ocurre de forma involuntaria en nuestro organismo. Los nutrientes pueden variar dependiendo de aquello que se consuma.</>
+        </div>
+    </section>
+</section>
+<section class="container">
+    <section class="row">
+        <div class="col-12 justify-content-around rounded-circle">
+            <h1 id="galeria">GALERIA DE IMAGENES</h1>
+        </div>
+    </section>
+    <section class="row movies">
+        <div class="col-12 swiper myswiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="../imagenes/1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/2.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/3.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/4.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/5.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/6.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/7.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/8.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/9.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/10.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./imagenes/11.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="script.js" ></script>
 </body>
 </html>
