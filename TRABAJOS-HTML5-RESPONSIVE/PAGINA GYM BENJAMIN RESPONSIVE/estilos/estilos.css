@@ -17,7 +17,7 @@
     opacity: 1;
 }
 h1{
-    color: grey;
+    color: rgb(67, 67, 67);
     font-size: 55px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -40,9 +40,17 @@ h3{
     margin: auto;
     text-align: center;
 }
-h3{
-    color: black;
-    font-size: 38px;
+h4{
+    color: whitesmoke;
+    font-size: 20px;
+    font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+h5{
+    color: greenyellow;
+    font-size: 40px;
     font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     margin: auto;
@@ -70,23 +78,52 @@ img{
     align-items: center;
     opacity: 1;
 }
+.contacto img{
+    width: 40%;
+    align-items: center;
+    padding: 10%;
+    opacity: 1;
 .lista{
     padding-top: 25px;
     font-family: rale;
 }
-.movies{
-    padding: 50px 0 150px 0;
-}.swiper{
-    width: 100%;
+.precio{
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
-.swiper-slide{
-    background-position: center;
-    background-size: cover;
-    width: 250px;
+@media (max-width: 1200px min-width: 993px){
+    h1{
+        font-size: 20px;
+    }
+    h2{
+        font-size: 15px;
+    }
+    h3{
+        font-size: 13px;
+    }    
+    h4{
+        font-size: 8px;
+    }
+    li a{
+        font-size: 13px;
+    }
 }
-.swiper-slide img{
-    display: block;
-    width: 100%;
+@media (max-width: 992px){
+    h1{
+        font-size: 13px;
+    }
+    h2{
+        font-size: 8px;
+    }
+    h3{
+        font-size: 5px;
+    }    
+    h4{
+        font-size: 4px;
+    }
+    li a{
+        font-size: 8px;
+    }
 }
 @font-face{
     font-family: rale;
