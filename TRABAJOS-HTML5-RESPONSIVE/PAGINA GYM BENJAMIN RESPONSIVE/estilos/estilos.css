@@ -18,7 +18,7 @@
 }
 h1{
     color: rgb(67, 67, 67);
-    font-size: 55px;
+    font-size: 50px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     margin: auto;
@@ -34,7 +34,7 @@ h2{
 }
 h3{
     color: black;
-    font-size: 38px;
+    font-size: 40px;
     font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     margin: auto;
@@ -58,7 +58,7 @@ h5{
 }
 li a{
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: rale, Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     margin: auto;
@@ -83,6 +83,7 @@ img{
     align-items: center;
     padding: 10%;
     opacity: 1;
+}
 .lista{
     padding-top: 25px;
     font-family: rale;
@@ -91,38 +92,38 @@ img{
     padding-top: 20px;
     padding-bottom: 30px;
 }
-@media (max-width: 1200px min-width: 993px){
+@media (max-width: 1200px){
     h1{
-        font-size: 20px;
+        font-size: 35px;
     }
     h2{
-        font-size: 15px;
+        font-size: 25px;
     }
     h3{
-        font-size: 13px;
+        font-size: 20px;
     }    
     h4{
-        font-size: 8px;
+        font-size: 25px;
     }
     li a{
-        font-size: 13px;
+        font-size: 20px;
     }
 }
 @media (max-width: 992px){
     h1{
-        font-size: 13px;
+        font-size: 25px;
     }
     h2{
-        font-size: 8px;
+        font-size: 22px;
     }
     h3{
-        font-size: 5px;
+        font-size: 20px;
     }    
     h4{
-        font-size: 4px;
+        font-size: 20px;
     }
     li a{
-        font-size: 8px;
+        font-size: 15px;
     }
 }
 @font-face{
