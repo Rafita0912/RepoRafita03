@@ -177,10 +177,4 @@ def materia_prima():
         ["A98", "A98", "MANIJA + KIT BIPUNTO SERIE 60 ALVI", "Pza.", 35, 35, 39.88, 38.5, 41.69, 40.25, "ALVICRUZ - cbba -  -  - santa puej -  - "]]
   
     return materia;
-
-mp = materia_prima()
-for mppv in materia_prima():
-    print(mppv[2], " = ", mppv[4], " $us x ", mppv[3])
-
-print(mppv)
     
