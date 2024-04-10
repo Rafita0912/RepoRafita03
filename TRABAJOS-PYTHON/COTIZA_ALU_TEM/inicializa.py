@@ -1,5 +1,6 @@
-def acumulado():
-    acum = [
+def iniciar():
+    inicia = [
+        ["Código", "Código_origen", "Detalle_materia_prima", "Cantidad", "Unidad"], 
         ["M1", "M1", "SILICONA TRANSPARENTE, BLANCA O NEGRA", 0, "Tubo"], 
         ["M2", "M2", "SILICONA ESTRUCTURAL", 0, "Tubo"], 
         ["M3", "M3", "CINTA MASKING 1/2 pulg. (ROLLO DE 20)", 0, "Rollo"], 
@@ -177,11 +178,5 @@ def acumulado():
         ["A98", "A98", "MANIJA + KIT BIPUNTO SERIE 60 ALVI", 0, "Pza."]
         ]
   
-    return acum;
-
-mp = acumulado()
-for mppv in acumulado():
-    print(mppv[2], " = ", mppv[4], " $us x ", mppv[3])
-
-print(mppv)
+    return inicia;
     
