@@ -14,7 +14,7 @@ acumula = inicializa.iniciar() #inicializacion a 0 de todas las materias primas
 
 """
 FORMULARIO DE REGISTRO DE TOMA DE DATOS
--Guardar en bd SQlite
+
 """
 class Registro:
 
@@ -23,27 +23,38 @@ class Registro:
     def __init__(self,vetana):
         self.window=ventana   
         self.window.title("REGISTRO DE DATOS")
-        self.window.geometry("390x630")
+        self.window.geometry("393x580")
         self.window.resizable(0,0)
         self.window.config(bd=10)
         
         "--------------- Titulo --------------------"
+
         titulo= Label(ventana, text="REGISTRO DE DATOS",fg="black",font=("Comic Sans", 13,"bold"),pady=5).pack()
 
-        "--------------- Nuevo usuario logo --------------------"
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/foto_frente_con_tubos.png")
-        nueva_imagen=imagen_registro.resize((120,120))
+        "--------------- Logo e imagenes ------------"
+
+        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/logo_masercon.png")
+        nueva_imagen=imagen_registro.resize((240,60))
         render=ImageTk.PhotoImage(nueva_imagen)
         label_imagen= Label(ventana, image= render)
         label_imagen.image=render
         label_imagen.pack(pady=3)
 
-        "--------------- Marco --------------------"
+        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/foto_frentes_templado.png")
+        nueva_imagen=imagen_registro.resize((260,130))
+        render=ImageTk.PhotoImage(nueva_imagen)
+        label_imagen= Label(ventana, image= render)
+        label_imagen.image=render
+        label_imagen.pack(pady=3)
+
+        "--------- Marco para toma de datos ------------"
+
         marco = LabelFrame(ventana, text="Registro de datos",font=("Comic Sans", 10,"bold"))
         marco.config(bd=2,pady=3)
         marco.pack()
 
-        "--------------- Formulario --------------------"
+        "--------- Formulario de toma de datos ----------"
+
         label_obra=Label(marco,text="OBRA : ",font=("Comic Sans", 10,"bold")).grid(row=0,column=0,sticky='s',padx=5,pady=3)
         self.obra=Entry(marco,width=25)
         self.obra.focus()
@@ -62,17 +73,21 @@ class Registro:
        # self.combo_sexo.current(0)
        # self.combo_sexo.grid(row=3,column=1,padx=10,pady=3)
 
-        label_direccion=Label(marco,text="Dirección : ",font=("Comic Sans", 10,"bold")).grid(row=4,column=0,sticky='s',padx=10,pady=3)
+        label_direccion=Label(marco,text="Dirección : ",font=("Comic Sans", 10,"bold")).grid(row=3,column=0,sticky='s',padx=10,pady=3)
         self.direccion=Entry(marco,width=25)
-        self.direccion.grid(row=4, column=1, padx=10, pady=3)
+        self.direccion.grid(row=3, column=1, padx=10, pady=3)
 
-        label_correo=Label(marco,text="Correo electronico: ",font=("Comic Sans", 10,"bold")).grid(row=5,column=0,sticky='s',padx=10,pady=8)
+        label_correo=Label(marco,text="Correo electronico: ",font=("Comic Sans", 10,"bold")).grid(row=4,column=0,sticky='s',padx=10,pady=8)
         self.correo=Entry(marco,width=25)
-        self.correo.grid(row=5, column=1, padx=10, pady=8)
+        self.correo.grid(row=4, column=1, padx=10, pady=8)
 
-        label_observaciones=Label(marco,text="Observaciones : ",font=("Comic Sans", 10,"bold")).grid(row=6,column=0,sticky='s',padx=10,pady=3)
+        label_observaciones=Label(marco,text="Observaciones : ",font=("Comic Sans", 10,"bold")).grid(row=5,column=0,sticky='s',padx=10,pady=3)
         self.observaciones=Entry(marco,width=25,show="*")
-        self.observaciones.grid(row=6, column=1, padx=10, pady=3)
+        self.observaciones.grid(row=5, column=1, padx=10, pady=3)
+
+        label_password=Label(marco,text="Contraseña : ",font=("Comic Sans", 10,"bold")).grid(row=6,column=0,sticky='s',padx=10,pady=3)
+        self.password=Entry(marco,width=25,show="*")
+        self.password.grid(row=6, column=1, padx=10, pady=3)
 
         #label_password=Label(marco,text="Repetir contraseña: ",font=("Comic Sans", 10,"bold")).grid(row=7,column=0,sticky='s',padx=10,pady=8)
         #self.repetir_password=Entry(marco,width=25,show="*")
@@ -95,11 +110,13 @@ class Registro:
         #label_nota=Label(marco_pregunta,text="*Esta respuesta te permitira recuperar tu contraseña.",font=("Comic Sans", 9,"bold"),foreground="blue").grid(row=2,column=0,columnspan=2,sticky='s',padx=10)
 
         "--------------- Frame botones --------------------"
+
         frame_botones=Frame(ventana)
         frame_botones.pack()
 
-        "--------------- Botones --------------------"
-        boton_registrar=Button(frame_botones,text="REGISTRAR",command=self.Registrar_usuario ,height=2,width=10,bg="green",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=1, padx=10, pady=15)
+        "------------------ Botones -----------------------"
+        
+        boton_registrar=Button(frame_botones,text="REGISTRAR Y COTIZAR",command=self.Registrar_usuario ,height=2,width=20,bg="green",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=1, padx=10, pady=15)
         #boton_limpiar=Button(frame_botones,text="LIMPIAR",command=self.Limpiar_formulario ,height=2,width=10,bg="gray",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=2, padx=10, pady=15)
         boton_cancelar=Button(frame_botones,text="CERRAR",command=ventana.quit ,height=2,width=10,bg="red",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=3, padx=10, pady=15)
         
@@ -128,10 +145,10 @@ class Registro:
         else:
              messagebox.showerror("ERROR EN REGISTRO", "Complete todos los campos del formulario")
     def Validar_contraseña(self):
-        if(str(self.password.get()) == str(self.repetir_password.get())):
+        if(str(self.password.get()) == "rafita"):
             return True
         else:
-            messagebox.showerror("ERROR EN REGISTRO", "Contraseñas no coinciden")
+            messagebox.showerror("ERROR EN REGISTRO", "Contraseña no coincide")
  
     def Buscar_dni(self, dni):
         with sqlite3.connect(self.db_name) as conexion:
