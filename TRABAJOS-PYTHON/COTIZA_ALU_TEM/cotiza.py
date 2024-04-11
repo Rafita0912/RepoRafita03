@@ -12,9 +12,9 @@ import sqlite3
 mp = materiales.materia_prima() # lista de precios de materia prima
 acumula = inicializa.iniciar() #inicializacion a 0 de todas las materias primas
 
-"""
-FORMULARIO DE REGISTRO DE TOMA DE DATOS
 
+"""
+FORMULARIO DE REGISTRO DE OBRA Y CLIENTE
 """
 class Registro:
 
@@ -128,52 +128,51 @@ class Registro:
         return result 
     
     def Limpiar_formulario(self):
-        self.dni.delete(0, END)
-        self.nombres.delete(0, END)
-        self.apellidos.delete(0, END)
-        self.combo_sexo.delete(0, END)
-        self.edad.delete(0, END)
+        self.obra.delete(0, END)
+        self.cliente.delete(0, END)
+        self.telefono.delete(0, END)
+        self.direccion.delete(0, END)
         self.correo.delete(0, END)
+        self.observaciones.delete(0, END)
         self.password.delete(0, END)
-        self.repetir_password.delete(0, END)
-        self.combo_pregunta.delete(0, END)
-        self.respuesta.delete(0, END)        
+    #    self.repetir_password.delete(0, END)
+    #    self.combo_pregunta.delete(0, END)
+    #    self.respuesta.delete(0, END)        
         
     def Validar_formulario_completo(self):
-        if len(self.dni.get()) !=0 and len(self.nombres.get()) !=0 and len(self.apellidos.get()) !=0 and len(self.combo_sexo.get()) !=0 and len(self.edad.get()) !=0 and len(self.password.get()) !=0 and len(self.repetir_password.get()) !=0 and len(self.correo.get()) !=0 and len(self.respuesta.get()) !=0:
+        if len(self.obra.get()) !=0 and len(self.cliente.get()) !=0 and len(self.telefono.get()) !=0 and len(self.direccion.get()) !=0 and len(self.correo.get()) !=0 and len(self.observaciones.get()) !=0 and len(self.password.get()) !=0:
             return True
         else:
              messagebox.showerror("ERROR EN REGISTRO", "Complete todos los campos del formulario")
+
     def Validar_contraseña(self):
         if(str(self.password.get()) == "rafita"):
             return True
         else:
             messagebox.showerror("ERROR EN REGISTRO", "Contraseña no coincide")
  
-    def Buscar_dni(self, dni):
-        with sqlite3.connect(self.db_name) as conexion:
-            cursor=conexion.cursor()
-            sql="SELECT * FROM Usuarios WHERE DNI = {}".format(dni)
-            cursor.execute(sql)
-            dnix= cursor.fetchall() # obtener respuesta como lista
-            cursor.close()
-            return dnix
+    # def Buscar_dni(self, dni):
+    #    with sqlite3.connect(self.db_name) as conexion:
+    #        cursor=conexion.cursor()
+    #        sql="SELECT * FROM Usuarios WHERE DNI = {}".format(dni)
+    #        cursor.execute(sql)
+    #        dnix= cursor.fetchall() # obtener respuesta como lista
+    #        cursor.close()
+    #        return dnix
     
-    def Validar_dni(self):
-        dni= self.dni.get()
-        dato = self.Buscar_dni(dni)
-        if (dato == []):
-            return True
-        else:
-            messagebox.showerror("ERROR EN REGISTRO", "DNI registrado anteriormente")
+    # def Validar_dni(self):
+    #    dni= self.dni.get()
+    #    dato = self.Buscar_dni(dni)
+    #    if (dato == []):
+    #        return True
+    #    else:
+    #        messagebox.showerror("ERROR EN REGISTRO", "DNI registrado anteriormente")
 
     def Registrar_usuario(self):
-        if self.Validar_formulario_completo() and self.Validar_contraseña() and self.Validar_dni():
+        if self.Validar_formulario_completo() and self.Validar_contraseña():
             query='INSERT INTO Usuarios VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)'
-            parameters = (self.dni.get(),self.nombres.get(),self.apellidos.get(),self.combo_sexo.get(),self.edad.get(),self.correo.get(),self.password.get(),self.respuesta.get())
-            self.Ejecutar_consulta(query, parameters)
-            messagebox.showinfo("REGISTRO EXITOSO", f'Bienvenido {self.nombres.get()} {self.apellidos.get()}')
-            print('USUARIO CREADO')
+            parameters = (self.obra.get(),self.cliente.get(),self.telefono.get(),self.direccion.get(),self.correo.get(),self.observaciones.get(),self.password.get())
+            messagebox.showinfo(f'Bienvenido {self.cliente.get()}') # {self.apellidos.get()}')
             self.Limpiar_formulario()
             
 if __name__ == '__main__':
@@ -181,18 +180,19 @@ if __name__ == '__main__':
     application=Registro(ventana)
     ventana.mainloop()
 
+
 #for mppv in materiales.materia_prima():
 #    print(mppv[2], " = ", mppv[4], " $us x ", mppv[3])
 
 print(mp[4][3])
 
-#acumula[5][3] += 5
-#acumula[5][3] += 5
+acumula[5][3] += 5
+acumula[5][3] += 5
 
 #for acu in acumulado.acum():
 #    print(acu)
 
-print(acumula[4][3])
+print(acumula[5][3])
 
 #for acu in acumula:
 #    if acu[3] != 0:
