@@ -19,7 +19,7 @@ class Registro:
 
     db_name='database_proyecto.db'
     
-    def __init__(self, ventana):
+    def __init__(self, ventana1):
         self.window=ventana   
         self.window.title("REGISTRO DE DATOS")
         self.window.geometry("393x580")
@@ -130,11 +130,13 @@ class Registro:
             Opciones()
 
 
-
-if __name__ == '__main__':
-    ventana=Tk()
-    application=Registro(ventana)
-    ventana.mainloop()
+ventana=Tk()
+application=Registro(ventana)
+ventana.mainloop()
+#if __name__ == '__main__':
+#    ventana=Tk()
+#    application=Registro(ventana)
+#    ventana.mainloop()
 
 
 #for mppv in materiales.materia_prima():
