@@ -70,11 +70,6 @@ class Registro:
         self.telefono.grid(row=2, column=1, padx=10, pady=3)
         te = self.telefono
 
-       # label_sexo=Label(marco,text="Sexo: ",font=("Comic Sans", 10,"bold")).grid(row=3,column=0,sticky='s',padx=10,pady=3)
-       # self.combo_sexo=ttk.Combobox(marco,values=["Masculino", "Femenino"], width=22,state="readonly")
-       # self.combo_sexo.current(0)
-       # self.combo_sexo.grid(row=3,column=1,padx=10,pady=3)
-
         label_direccion=Label(marco,text="Dirección : ",font=("Comic Sans", 10,"bold")).grid(row=3,column=0,sticky='s',padx=10,pady=3)
         self.direccion=Entry(marco,width=25)
         self.direccion.grid(row=3, column=1, padx=10, pady=3)
@@ -95,26 +90,6 @@ class Registro:
         self.password.grid(row=6, column=1, padx=10, pady=3)
         con = self.password
 
-        #label_password=Label(marco,text="Repetir contraseña: ",font=("Comic Sans", 10,"bold")).grid(row=7,column=0,sticky='s',padx=10,pady=8)
-        #self.repetir_password=Entry(marco,width=25,show="*")
-        #self.repetir_password.grid(row=7, column=1, padx=10, pady=8)
-        
-        #"--------------- Marco pregunta --------------------"
-        #marco_pregunta = LabelFrame(ventana, text="Si olvidas tu contraseña",font=("Comic Sans", 10,"bold"),pady=10)
-        #marco_pregunta.config(bd=2,pady=5)
-        #marco_pregunta.pack()
-        #"--------------- Pregunta --------------------"
-        #label_pregunta=Label(marco_pregunta,text="Pregunta: ",font=("Comic Sans", 10,"bold")).grid(row=0,column=0,sticky='s',padx=10,pady=8)
-        #self.combo_pregunta=ttk.Combobox(marco_pregunta,values=["¿Nombre de tu primera mascota?","¿Lugar dónde fuiste al colegio?","¿En que ciudad naciste?","¿Cómo se llama tu equipo favorito?"], width=30,state="readonly")
-        #self.combo_pregunta.current(0)
-        #self.combo_pregunta.grid(row=0,column=1,padx=10,pady=8)
-  
-        #label_respuesta=Label(marco_pregunta,text="Respuesta: ",font=("Comic Sans", 10,"bold")).grid(row=1,column=0,sticky='s',padx=10,pady=8)
-        #self.respuesta=Entry(marco_pregunta,width=33)
-        #self.respuesta.grid(row=1, column=1, padx=10, pady=8)        
-        
-        #label_nota=Label(marco_pregunta,text="*Esta respuesta te permitira recuperar tu contraseña.",font=("Comic Sans", 9,"bold"),foreground="blue").grid(row=2,column=0,columnspan=2,sticky='s',padx=10)
-
         "--------------- Frame botones --------------------"
 
         frame_botones=Frame(ventana)
@@ -126,13 +101,6 @@ class Registro:
         #boton_limpiar=Button(frame_botones,text="LIMPIAR",command=self.Limpiar_formulario ,height=2,width=10,bg="gray",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=2, padx=10, pady=15)
         boton_cancelar=Button(frame_botones,text="CERRAR",command=ventana.quit ,height=2,width=10,bg="red",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=3, padx=10, pady=15)
         
-    # def Ejecutar_consulta(self, query, parameters=()):
-    #    with sqlite3.connect(self.db_name) as conexion:
-    #        cursor=conexion.cursor()
-    #        result=cursor.execute(query,parameters)
-    #        conexion.commit()
-    #    return result 
-              
     def Validar_formulario_completo(self):
         if len(self.obra.get()) !=0 and len(self.cliente.get()) !=0 and len(self.telefono.get()) !=0 and len(self.direccion.get()) !=0 and len(self.correo.get()) !=0 and len(self.observaciones.get()) !=0 and len(self.password.get()) !=0:
             return True
@@ -152,27 +120,6 @@ class Registro:
         self.correo.delete(0, END)
         self.observaciones.delete(0, END)
         self.password.delete(0, END)
-    #    self.repetir_password.delete(0, END)
-    #    self.combo_pregunta.delete(0, END)
-    #    self.respuesta.delete(0, END)
-     
- 
-    # def Buscar_dni(self, dni):
-    #    with sqlite3.connect(self.db_name) as conexion:
-    #        cursor=conexion.cursor()
-    #        sql="SELECT * FROM Usuarios WHERE DNI = {}".format(dni)
-    #        cursor.execute(sql)
-    #        dnix= cursor.fetchall() # obtener respuesta como lista
-    #        cursor.close()
-    #        return dnix
-    
-    # def Validar_dni(self):
-    #    dni= self.dni.get()
-    #    dato = self.Buscar_dni(dni)
-    #    if (dato == []):
-    #        return True
-    #    else:
-    #        messagebox.showerror("ERROR EN REGISTRO", "DNI registrado anteriormente")
 
     def Registrar_usuario(self):
         if self.Validar_formulario_completo() and self.Validar_contraseña():
@@ -183,121 +130,6 @@ class Registro:
             Opciones()
 
 
-
-class Opciones:
-
-    db_name='database_proyecto.db'
-    ventana=Tk()
-    
-    def __init__(self, ventana):
-        self.window=ventana   
-        self.window.title("REGISTRO DE DATOS")
-        self.window.geometry("400x780")
-        self.window.resizable(0,0)
-        self.window.config(bd=10)
-        
-        "--------------- Titulo --------------------"
-
-        titulo= Label(ventana, text="ELIGE LA OPCION A COTIZAR",fg="black",font=("Comic Sans", 13,"bold"),pady=5).pack()
-
-        "--------------- Logo e imagenes ------------"
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/logo_masercon.png")
-        nueva_imagen=imagen_registro.resize((240,60))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/frentes_fijos.png")
-        nueva_imagen=imagen_registro.resize((400,100))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/puerta_ventana_corrediza.png")
-        nueva_imagen=imagen_registro.resize((400,100))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        "--------- Elija el cerramiento a cotizar ------------"
-
-        marco = LabelFrame(ventana, text="Cerramiento elegido",font=("Comic Sans", 10,"bold"))
-        marco.config(bd=2,pady=3)
-        marco.pack()
-
-        "--------- Formulario de toma de datos ----------"
-
-        label_obra=Label(marco,text="OBRA : ",font=("Comic Sans", 10,"bold")).grid(row=0,column=0,sticky='s',padx=5,pady=3)
-        self.obra=Entry(marco,width=25)
-        self.obra.focus()
-        self.obra.grid(row=0, column=1, padx=5, pady=3)
-        ob = self.obra
-
-        label_cliente=Label(marco,text="Cliente : ",font=("Comic Sans", 10,"bold")).grid(row=1,column=0,sticky='s',padx=10,pady=3)
-        self.cliente=Entry(marco,width=25)
-        self.cliente.grid(row=1, column=1, padx=10, pady=3)
-        cl = self.cliente
-
-        label_telefono=Label(marco,text="Teléfono: ",font=("Comic Sans", 10,"bold")).grid(row=2,column=0,sticky='s',padx=10,pady=3)
-        self.telefono=Entry(marco,width=25)
-        self.telefono.grid(row=2, column=1, padx=10, pady=3)
-        te = self.telefono
-
-        label_direccion=Label(marco,text="Dirección : ",font=("Comic Sans", 10,"bold")).grid(row=3,column=0,sticky='s',padx=10,pady=3)
-        self.direccion=Entry(marco,width=25)
-        self.direccion.grid(row=3, column=1, padx=10, pady=3)
-        di = self.direccion
-
-        label_correo=Label(marco,text="Correo electronico: ",font=("Comic Sans", 10,"bold")).grid(row=4,column=0,sticky='s',padx=10,pady=8)
-        self.correo=Entry(marco,width=25)
-        self.correo.grid(row=4, column=1, padx=10, pady=8)
-        co = self.correo
-
-        label_observaciones=Label(marco,text="Observaciones : ",font=("Comic Sans", 10,"bold")).grid(row=5,column=0,sticky='s',padx=10,pady=3)
-        self.observaciones=Entry(marco,width=25,show="*")
-        self.observaciones.grid(row=5, column=1, padx=10, pady=3)
-        obs = self.observaciones
-
-        label_password=Label(marco,text="Contraseña : ",font=("Comic Sans", 10,"bold")).grid(row=6,column=0,sticky='s',padx=10,pady=3)
-        self.password=Entry(marco,width=25,show="*")
-        self.password.grid(row=6, column=1, padx=10, pady=3)
-        con = self.password
-
-        "--------------- Frame botones --------------------"
-
-        frame_botones=Frame(ventana)
-        frame_botones.pack()
-
-        "------------------ Botones -----------------------"
-        
-        boton_registrar=Button(frame_botones,text="REGISTRAR Y COTIZAR",command=self.Registrar_usuario ,height=2,width=20,bg="green",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=1, padx=10, pady=15)
-
-        boton_cancelar=Button(frame_botones,text="CERRAR",command=ventana.quit ,height=2,width=10,bg="red",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=3, padx=10, pady=15)
-                   
-    def Validar_formulario_completo(self):
-        if len(self.obra.get()) !=0 and len(self.cliente.get()) !=0 and len(self.telefono.get()) !=0 and len(self.direccion.get()) !=0 and len(self.correo.get()) !=0 and len(self.observaciones.get()) !=0 and len(self.password.get()) !=0:
-            return True
-        else:
-             messagebox.showerror("ERROR EN REGISTRO", "Complete todos los campos del formulario")
-
-    def Limpiar(self):
-        self.obra.delete(0, END)
-        self.cliente.delete(0, END)
-        self.telefono.delete(0, END)
-        self.direccion.delete(0, END)
-        self.correo.delete(0, END)
-        self.observaciones.delete(0, END)
-        self.password.delete(0, END)
-
-    def Registrar_usuario(self):
-        if self.Validar_formulario_completo() and self.Validar_contraseña():
-            query='INSERT INTO Usuarios VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)'
-            parameters = (self.obra.get(),self.cliente.get(),self.telefono.get(),self.direccion.get(),self.correo.get(),self.observaciones.get(),self.password.get())
-            self.Limpiar() 
-    ventana.mainloop()
 
 if __name__ == '__main__':
     ventana=Tk()

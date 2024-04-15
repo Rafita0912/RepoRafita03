@@ -1,5 +1,6 @@
 def materia_prima():
     materia = [
+        ["CODIGO", "CODIGO ORIGEN", "DESCRIPCION DE MATERIA PRIMA", "UNIDAD", "COSTO CON FACTURA", "COSTO SIN FACTURA", "PRECIO-1", "PRECIO-1 C/DESC", "PRECIO-2", "PRECIO-2 C/DESC", "OBSERVACIONES"], 
         ["M1", "M1", "SILICONA TRANSPARENTE, BLANCA O NEGRA", "Tubo", 2.9, 2.9, 3.31, 3.19, 3.46, 3.34, "MAROL 20 Bs. -   -   - "], 
         ["M2", "M2", "SILICONA ESTRUCTURAL", "Tubo", 6.24, 6, 7.11, 6.59, 7.44, 6.9, "MAROL 20 Bs. -   -   - "], 
         ["M3", "M3", "CINTA MASKING 1/2 pulg. (ROLLO DE 20)", "Rollo", 0.65, 0.65, 0.75, 0.72, 0.78, 0.75, "Ribepar  -   -   - "], 

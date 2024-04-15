@@ -1,6 +1,6 @@
 def iniciar():
     inicia = [
-        ["Código", "Código_origen", "Detalle_materia_prima", "Cantidad", "Unidad"], 
+        ["CODIGO", "CODIGO ORIGEN", "DESCRIPCION MATERIA PRIMA", "CANTIDAD o COTIZACION", "UNIDAD o $US"], 
         ["M1", "M1", "SILICONA TRANSPARENTE, BLANCA O NEGRA", 0, "Tubo"], 
         ["M2", "M2", "SILICONA ESTRUCTURAL", 0, "Tubo"], 
         ["M3", "M3", "CINTA MASKING 1/2 pulg. (ROLLO DE 20)", 0, "Rollo"], 
@@ -182,7 +182,6 @@ def iniciar():
         ["DI", "DI", "DIRECCION", "", ""],
         ["CO", "CO", "CORREO", "", ""],
         ["OBS", "OBS", "OBSERVACIONES", "", ""],
-        ["CON", "CON", "CONTRASENA", "", ""],
         ["CPF8", "CPF8", "PAÑOS FIJOS CON VIDRIO TEMPLADO INCOLORO DE 8 mm DE ESPESOR", 0, "Unidades"],
         ["MPF8", "MPF8", "PAÑOS FIJOS CON VIDRIO TEMPLADO INCOLORO DE 8 mm DE ESPESOR", 0, "Mt2"],
         ["MOPF8", "MOPF8", "PAÑOS FIJOS CON VIDRIO TEMPLADO INCOLORO DE 8 mm DE ESPESOR", 0, "Dolares Americanos"],

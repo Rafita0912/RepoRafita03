@@ -9,7 +9,11 @@ from PIL import ImageTk, Image
 import sqlite3
 
 mp = materiales.materia_prima()
-acumula = inicializa.iniciar() 
+acumulado_cantidad = inicializa.iniciar() 
+cotiza1c = inicializa.iniciar()
+cotiza1s = inicializa.iniciar()
+cotiza2c = inicializa.iniciar()
+cotiza2s = inicializa.iniciar()
 
 class login:
     def __init__(self):
@@ -51,15 +55,62 @@ class login:
         self.boton_ingresar.grid(row=2, column=0, columnspan=2, pady=35)
 
 
-    mainloop()
+        mainloop()
 
     def entrar(self):
         nombre = self.entry_usuario.get()
         contra = self.entry_password.get()
         if nombre == "TECNICO" and contra == "123":
-            messagebox.showinfo("Acceso correcto")
+            messagebox.showinfo("SI", "Acceso correcto")
+            self.ventana.destroy()
+            registro()
         else:
-            messagebox.showinfo("ERROR algun dato ingresado no es correcto")
+            messagebox.showinfo("NO", "ERROR algun dato ingresado no es correcto")
 
+class registro:
+    
+    db_name='database_proyecto.db'
+
+    def __init__(self):
+        self.ventana = Tk()
+        self.ventana.geometry("395x600")
+        self.ventana.title("Registro")
+        self.ventana.config(bg="#88ff84")
+
+#        self.frame = Frame(self.ventana)
+#        self.frame.configure(bg="#88ff84")
+#        self.frame.pack(fill="both", expand="True")
+                            
+        self.titulo = Label(self.ventana, text="REGISTRO DE DATOS", font=("Comic Sans", 16,"bold"), bg="#88ff84", fg="black")
+
+        self.img = Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/logo_masercon.png")
+        self.img = self.img.resize((240,60))
+        self.render = ImageTk.PhotoImage(self.img)
+        self.fondo = Label(self.frame, image = self.render, bg="#88ff84")
+        self.fondo.pack(expand=True, fill="both", side="top", pady=3)
+
+
+        self.etiqueta_obra = Label(self.ventana, text="OBRA : ", bg="#88ff84", fg="black")
+        self.etiqueta_cliente = Label(self.ventana, text="CLIENTE : ", bg="#88ff84", fg="black")
+        self.etiqueta_telefono = Label(self.ventana, text="TELEFONO : ", bg="#88ff84", fg="black")
+        self.etiqueta_direccion = Label(self.ventana, text="DIRECCION : ", bg="#88ff84", fg="black")
+        self.etiqueta_correo = Label(self.ventana, text="EMAIL : ", bg="#88ff84", fg="black")
+        self.etiqueta_observaciones = Label(self.ventana, text="OBSERVACIONES : ", bg="#88ff84", fg="black")
+
+        self.entrada_obra = Entry(self.ventana)
+        self.entrada_cliente = Entry(self.ventana)
+        self.entrada_telefono = Entry(self.ventana)
+        self.entrada_direccion = Entry(self.ventana)
+        self.entrada_correo = Entry(self.ventana)
+        self.entrada_observaciones = Entry(self.ventana)
+        
+
+print(mp[4][2])
+print(acumulado_cantidad[5][3])
+
+acumulado_cantidad[5][3] += 5
+acumulado_cantidad[5][3] += 5
+
+print(acumulado_cantidad[5][3])
 
 login()
