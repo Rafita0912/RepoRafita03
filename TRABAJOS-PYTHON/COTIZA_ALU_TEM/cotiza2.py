@@ -5,15 +5,11 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox 
 from PIL import ImageTk, Image
+from datetime import datetime
 
 import sqlite3
 
-mp = materiales.materia_prima()
-acumulado_cantidad = inicializa.iniciar() 
-cotiza1c = inicializa.iniciar()
-cotiza1s = inicializa.iniciar()
-cotiza2c = inicializa.iniciar()
-cotiza2s = inicializa.iniciar()
+mp_ac = inicializa.iniciar()
 
 class login:
     def __init__(self):
@@ -236,15 +232,14 @@ class Opciones:
 
         boton_proforma=Button(frame_botones, text="PROFORMA", command=self.proforma,height=2,width=10,bg="green",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=1, padx=10, pady=15)
 
-        boton_cancelar=Button(frame_botones, text="CERRAR", command=(ventana.quit, ventana.destroy()) ,height=2,width=10,bg="red",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=3, padx=10, pady=15)
+        boton_cancelar=Button(frame_botones, text="CERRAR", command=(ventana.quit(), ventana.destroy()) ,height=2,width=10,bg="red",fg="white",font=("Comic Sans", 10,"bold")).grid(row=0, column=3, padx=10, pady=15)
         
     def Validar_formulario_completo(self):
         if len(self.opcion.get()) !=0:
-            self.raiz.destroy()
+            ventana.destroy()
             ventana=Tk()
             application=Operacion()
             ventana.mainloop()
-            return True
         else:
              messagebox.showerror("ERROR EN REGISTRO", "Complete todos los campos del formulario")
 
@@ -274,13 +269,13 @@ class Operacion:
         divi=self.valor1/self.valor2
         print("La division es",divi)
 
+print(mp_ac[168][2])
+print(mp_ac[214][2])
+
+mp_ac[5][4] += 5
+mp_ac[5][4] += 5
+
+print(mp_ac[5][4])
 
 login()
 
-print(mp[4][2])
-print(acumulado_cantidad[5][3])
-
-acumulado_cantidad[5][3] += 5
-acumulado_cantidad[5][3] += 5
-
-print(acumulado_cantidad[5][3])
