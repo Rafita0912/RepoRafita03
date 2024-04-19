@@ -1,0 +1,17 @@
+habilitar la funcion convertir numeros a letras
+PRIMERO HABILITAR MACROS
+1. Ir a Archivo ..... Opciones .... Centro de confianza
+2. Configuracion de centro de confianza .... marcar Habiloitar todas las macros ..... Habiliatar macros de excel y Confiar en acceso de modelo de objetos
+3. Aceptar .... Aceptar ...
+y lijto las macros ya funcionan en su PC
+SEGUNDO HABILITAR COMPLEMENTO PARA NUMEROS A LETRAS
+1. click derecho sobre el archivo    036 - Función UDF Convertir números a letras - EXCELeINFO.xlsm
+2. en propiedades, en la parte baja marcar la casilla de desbloquear, aplicar y aceptar
+3. ingresar a una hoja excel vacia
+4. Ir a Archivo .... Opciones .... Complementos .... Administrar ( complementos de excel ) ..... ir
+5. Examinar ...... ir al directorio donde grabaron los archivos y seleccionar el archivo  .... 036 - Función UDF Convertir números a letras - EXCELeINFO.xlam
+6. marcar la casilla donde aparece el archivo
+7. aceptar
+y lijto ya lo tienes habilitado y lijto para trabajar
+
+
