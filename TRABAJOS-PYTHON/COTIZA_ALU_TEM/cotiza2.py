@@ -153,9 +153,10 @@ class Registro:
         if self.Validar_formulario_completo():
             query='INSERT INTO Usuarios VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)'
             parameters = (self.obra.get(),self.cliente.get(),self.telefono.get(),self.direccion.get(),self.correo.get(),self.observaciones.get())
-            ventana=Tk()
-            application=Opciones(ventana)
-            ventana.mainloop()
+
+        ventana=Tk()
+        application=Opciones(ventana)
+        ventana.mainloop()
 
 class Opciones:
     
@@ -179,28 +180,7 @@ class Opciones:
         label_imagen.image=render
         label_imagen.pack(pady=3)
 
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/frentes_fijos.png")
-        nueva_imagen=imagen_registro.resize((250,100))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/puerta_ventana_corrediza.png")
-        nueva_imagen=imagen_registro.resize((250,100))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/puerta_batiente_1.png")
-        nueva_imagen=imagen_registro.resize((250,100))
-        render=ImageTk.PhotoImage(nueva_imagen)
-        label_imagen= Label(ventana, image= render)
-        label_imagen.image=render
-        label_imagen.pack(pady=3)
-
-        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/puerta_batiente_2.png")
+        imagen_registro=Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/opciones_a_cotizar.png")
         nueva_imagen=imagen_registro.resize((250,100))
         render=ImageTk.PhotoImage(nueva_imagen)
         label_imagen= Label(ventana, image= render)
@@ -236,7 +216,7 @@ class Opciones:
         
     def Validar_formulario_completo(self):
         if len(self.opcion.get()) !=0:
-            ventana.destroy()
+            self.raiz.destroy()
             ventana=Tk()
             application=Operacion()
             ventana.mainloop()
