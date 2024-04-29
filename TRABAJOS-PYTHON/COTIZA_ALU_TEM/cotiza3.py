@@ -11,11 +11,11 @@ import sqlite3
 
 mp_ac = inicializa.iniciar()
 
-class op1:
+class op2:
     def __init__(self):
         self.ventana = Tk()
-        self.ventana.geometry("380x700")
-        self.ventana.title("Op1")
+        self.ventana.geometry("380x740")
+        self.ventana.title("Op2")
 
         self.frame1 = Frame(self.ventana)
         self.frame1.configure(bg="#88ff84")
@@ -28,10 +28,10 @@ class op1:
         self.frame2.columnconfigure(0, weight=1)
         self.frame2.columnconfigure(1, weight=1)
 
-        self.titulo = Label(self.frame1, text="FRENTE TEMPLADO TIPO SPYDER", font=("Comic Sans", 14,"bold"), bg="#88ff84")
+        self.titulo = Label(self.frame1, text="FRENTE TEMPLADO \n CON HERRAJES Y VIENTOS", font=("Comic Sans", 14,"bold"), bg="#88ff84")
         self.titulo.pack(side="top", pady=15)
 
-        self.img = Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/op1a.png")
+        self.img = Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/op2a.png")
         self.img = self.img.resize((260,260))
         self.render = ImageTk.PhotoImage(self.img)
         self.fondo = Label(self.frame1, image = self.render, bg="#88ff84")
@@ -57,7 +57,7 @@ class op1:
         self.entry_espesor = Entry(self.frame2, bd=0, width=30, font=("Comic Sans", 11,"bold"))
         self.entry_espesor.grid(row=3, column=1, columnspan=3, padx=10, pady=3, sticky="w")
         
-        self.label_color = Label(self.frame2, text="VIDRIO INCOLORO = 1 .... COLOR = 2 : ",font=("Comic Sans", 11,"bold"), bg="#88ff84", fg="black", width=50)
+        self.label_color = Label(self.frame2, text="VIDRIO INCOLORO = 1 : \n VIDRIO COLOR = 2 : ",font=("Comic Sans", 11,"bold"), bg="#88ff84", fg="black", width=50)
         self.label_color.grid(row=4, column=0, padx=5, pady=3, sticky="e")
         self.entry_color = Entry(self.frame2, bd=0, width=30, font=("Comic Sans", 11,"bold"))
         self.entry_color.grid(row=4, column=1, columnspan=3, padx=10, pady=3, sticky="w")
@@ -72,15 +72,6 @@ class op1:
         self.entry_mhorizontal = Entry(self.frame2, bd=0, width=30, font=("Comic Sans", 11,"bold"))
         self.entry_mhorizontal.grid(row=6, column=1, columnspan=3, padx=10, pady=3, sticky="w")
         
-        self.label_freno = Label(self.frame2, text="CON FRENO = 1 .... CON PIVOTE = 2 : ",font=("Comic Sans", 11,"bold"), bg="#88ff84", fg="black", width=50)
-        self.label_freno.grid(row=7, column=0, padx=5, pady=3, sticky="e")
-        self.entry_freno = Entry(self.frame2, bd=0, width=30, font=("Comic Sans", 11,"bold"))
-        self.entry_freno.grid(row=7, column=1, columnspan=3, padx=10, pady=3, sticky="w")
-
-        self.label_puertaventana = Label(self.frame2, text="PUERTA = 1 .... VENTANA = 2 : ",font=("Comic Sans", 11,"bold"), bg="#88ff84", fg="black", width=50)
-        self.label_puertaventana.grid(row=8, column=0, padx=5, pady=3, sticky="e")
-        self.entry_puertaventana = Entry(self.frame2, bd=0, width=30, font=("Comic Sans", 11,"bold"))
-        self.entry_puertaventana.grid(row=8, column=1, columnspan=3, padx=10, pady=3, sticky="w")
 
         self.boton_cotizar = Button(self.frame2, text="COTIZAR Y SEGUIR", width=18, font=("Comic Sans", 11,"bold"), command=self.cotizar)
         self.boton_cotizar.grid(row=9, column=0, pady=15, columnspan=1, padx=25, sticky="w")
@@ -96,7 +87,7 @@ class op1:
         mainloop()
 
     def cotizar(self):
-        if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_espesor.get()) != 0 and len(self.entry_color.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0 and len(self.entry_freno.get()) != 0 and len(self.entry_puertaventana.get()) != 0:
+        if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_espesor.get()) != 0 and len(self.entry_color.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0:
             while True:
                 try:
                     x = float(self.entry_base.get())
@@ -112,8 +103,7 @@ class op1:
                     z = int(self.entry_mhorizontal.get())
                     a = int(self.entry_espesor.get())
                     c = int(self.entry_color.get())
-                    b = int(self.entry_freno.get())
-                    d = int(self.entry_puertaventana.get())
+
                     break
                 except ValueError:
                     messagebox.showinfo("NO", "ERROR ....... La CANTIDAD o LAS DIVISIONES no son correctas, revise los datos ingresados e introduzca nuevamente los valores correctos.... RECUERDE QUE DEBEN SER NUMEROS SIN DECIMALES")
@@ -127,12 +117,10 @@ class op1:
             color = int(self.entry_color.get())
             nvertical = int(self.entry_nvertical.get())
             mhorizontal = int(self.entry_mhorizontal.get())
-            freno = int(self.entry_freno.get())
-            puertaventana = int(self.entry_puertaventana.get())
+
 
             self.ventana.destroy()
-            ventana=Tk()
-            application=opcion()
+            application=previo()
             mainloop()
         else:
             messagebox.showinfo("NO", "ERROR algun dato ingresado no es correcto o no ingresaste algún dato")
@@ -144,6 +132,6 @@ mp_ac[5][13] += 5
 print(mp_ac[5][13])
 print(mp_ac[196][2], mp_ac[196][3])
 
-op1()
+op2()
 
 print(mp_ac[196][2], mp_ac[196][3])
