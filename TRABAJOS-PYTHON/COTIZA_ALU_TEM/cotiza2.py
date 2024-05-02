@@ -9,8 +9,11 @@ from datetime import datetime
 
 import sqlite3
 
-global mp_ac
+global mp_ac, mp, util1, util2
 mp_ac = inicializa.iniciar()
+mp = inicializa.iniciar()
+util1 = 1.10
+util2 = 1.15
 class login:
     def __init__(self):
         self.ventana = Tk()
@@ -60,8 +63,8 @@ class login:
         nombre = self.entry_usuario.get()
         contra = self.entry_password.get()
         if (nombre == "TECNICO" and contra == "123") or (nombre == "RAFA" and contra == "555"):
-            global mp_ac
             mp_ac = inicializa.iniciar()
+            mp = inicializa.iniciar()
             self.ventana.destroy()
             application=registro()
         else:
@@ -142,12 +145,19 @@ class registro:
 
     def registrar(self):
         if len(self.entry_obra.get()) != 0 and len(self.entry_cliente.get()) != 0 and len(self.entry_telefono.get()) != 0 and len(self.entry_direccion.get()) != 0 and len(self.entry_correo.get()) != 0 and len(self.entry_observaciones.get()) != 0:
+            # inicializando listas acumuladas y parciales para calcular costos y registrar
             mp_ac[196][3] = self.entry_obra.get()
             mp_ac[197][3] = self.entry_cliente.get()
             mp_ac[198][3] = self.entry_telefono.get()
             mp_ac[199][3] = self.entry_direccion.get()
             mp_ac[200][3] = self.entry_correo.get()
             mp_ac[201][3] = self.entry_observaciones.get()
+            mp[196][3] = self.entry_obra.get()
+            mp[197][3] = self.entry_cliente.get()
+            mp[198][3] = self.entry_telefono.get()
+            mp[199][3] = self.entry_direccion.get()
+            mp[200][3] = self.entry_correo.get()
+            mp[201][3] = self.entry_observaciones.get()
             self.ventana.destroy()
             application=opcion()
         else:
@@ -156,7 +166,7 @@ class registro:
 class opcion:
     def __init__(self):
         
-        global mp
+        #inicializamos el registro parcial
         mp = inicializa.iniciar()
         
         self.ventana = Tk()
@@ -280,6 +290,15 @@ class opcion:
             messagebox.showinfo("NO", "ERROR ...... algun dato ingresado no es correcto o no ingresaste la opcion ..... intenta nuevamente ....")
     
     def proforma(self):
+        for i in (1, 195):
+            mp_ac[i][15] = mp_ac[i][13] * 0.87 * util1 / 0.84
+            mp_ac[i][17] = mp_ac[i][13] * 0.87 * util2 / 0.84
+            mp_ac[i][16] = mp_ac[i][14] * util1
+            mp_ac[i][18] = mp_ac[i][14] * util2
+            mp[i][15] = mp[i][13] * 0.87 * util1 / 0.84
+            mp[i][17] = mp[i][13] * 0.87 * util2 / 0.84
+            mp[i][16] = mp[i][14] * util1
+            mp[i][18] = mp[i][14] * util2
         self.ventana.destroy()
         application=proforma()
 
@@ -372,6 +391,7 @@ class op1:
 
     def cotizar(self):
         if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_espesor.get()) != 0 and len(self.entry_color.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0:
+
             while True:
                 try:
                     x = float(self.entry_base.get())
@@ -390,7 +410,8 @@ class op1:
 
                     break
                 except ValueError:
-                    messagebox.showinfo("NO", "ERROR ....... La CANTIDAD o LAS DIVISIONES no son correctas, revise los datos ingresados e introduzca nuevamente los valores correctos.... RECUERDE QUE DEBEN SER NUMEROS SIN DECIMALES")
+
+                    messagebox.showinfo("NO", "ERROR ....... La CANTIDAD, LAS DIVISIONES, EL ESPESOR O EL COLOR no son correctos, revise los datos ingresados e introduzca nuevamente los valores correctos.... RECUERDE QUE DEBEN SER NUMEROS SIN DECIMALES")
                     return(False)
 
             base = float(self.entry_base.get())
@@ -403,13 +424,102 @@ class op1:
 
             if espesor == 8:
                 if color == 1:
-                    
+                    mp[18][11] = cantidad
+                    mp[18][12] = base * altura # superficie en mt2
+                    mp[18][13] = cantidad * mp[18][12] * mp[18][4] #costo del vidrio templado con factura
+                    mp[18][14] = cantidad * mp[18][12] * mp[18][5] #costo del vidrio templado con descuento
+                    vidrio = mp[18][13]
 
+                else:
+                    mp[23][11] = cantidad
+                    mp[23][12] = base * altura # superficie en mt2
+                    mp[23][13] = cantidad * mp[23][12] * mp[23][4] #costo del vidrio templado con factura
+                    mp[23][14] = cantidad * mp[23][12] * mp[23][5] #costo del vidrio templado con descuento
+                    vidrio = mp[23][13]
+
+            else:
+                if color == 1:
+                    mp[17][11] = cantidad
+                    mp[17][12] = base * altura # superficie en mt2
+                    mp[17][13] = cantidad * mp[17][12] * mp[17][4] #costo del vidrio templado con factura
+                    mp[17][14] = cantidad * mp[17][12] * mp[17][5] #costo del vidrio templado con descuento
+                    vidrio = mp[17][13]
+
+                else:
+                    mp[22][11] = cantidad
+                    mp[22][12] = base * altura # superficie en mt2
+                    mp[22][13] = cantidad * mp[22][12] * mp[22][4] #costo del vidrio templado con factura
+                    mp[22][14] = cantidad * mp[22][12] * mp[22][5] #costo del vidrio templado con descuento
+                    vidrio = mp[22][13]
+
+            mp[75][11] = cantidad * base * altura
+            mp[75][12] = mp[75][11]
+            mp[75][13] = mp[75][11] * mp[75][4] #costo mano de obra con factura
+            mp[75][14] = mp[75][11] * mp[75][5] #costo mano de obra con descuento
+            
+            mp[1][11] = ( cantidad * ((4 * base) + (4 * altura) + ((nvertical-1) * altura) + ((mhorizontal * base)))) / 6 # cantidad de silicona normal
+            mp[1][13] = mp[1][4] * mp[1][11] #costo silicona natural con factura
+            mp[1][14] = mp[1][5] * mp[1][11] #costo silicona natural con descuento
+            
+            mp[3][11] = ( cantidad * ((4 * base) + (4 * altura) + ((nvertical-1) * altura) + ((mhorizontal * base)))) * 2 / 20 # cantidad de cinta masking
+            mp[3][13] = mp[3][4] * mp[3][11] #costo cinta masking con factura
+            mp[3][14] = mp[3][5] * mp[3][11] #costo cinta masking con descuento  
+            
+            mp[5][11] = ( cantidad * ((2 * base) + (2 * altura)) * 0.2) # cantidad de perfil U 15 x 25 incoloro o bronce
+            mp[5][13] = mp[5][4] * mp[5][11] #costo de perfil U 15 x 25 incoloro o bronce con factura
+            mp[5][14] = mp[5][5] * mp[5][11] #costo de perfil U 15 x 25 incoloro o bronce con descuento
+
+            mp[14][11] = ( cantidad * ((2 * base) + (2 * altura))) / 0.4 # cantidad de tornillo de 8 x 1 1/2
+            mp[14][13] = mp[14][4] * mp[14][11] #costo de tornillo de 8 x 1 1/2 con factura
+            mp[14][14] = mp[14][5] * mp[14][11] #costo de tornillo de 8 x 1 1/2 con descuento
+
+            mp[13][11] = ( cantidad * ((2 * base) + (2 * altura))) / 0.4 # cantidad de tarugos No. 6
+            mp[13][13] = mp[13][4] * mp[13][11] #costo de tarugos No. 6 con factura
+            mp[13][14] = mp[13][5] * mp[13][11] #costo de tarugos No. 6 con descuento
+
+            mp[16][11] = ( cantidad * ((nvertical - 1) * altura)) # cantidad de tubo galvanizado de 4 pulg.
+            mp[16][13] = mp[16][4] * mp[16][11] #costo de tubo galvanizado de 4 pulg. con factura
+            mp[16][14] = mp[16][5] * mp[16][11] #costo de tubo galvanizado de 4 pulg. con descuento
+
+            mp[76][11] = cantidad * (nvertical - 1) * (mhorizontal - 1) # cantidad de herrajes araña
+            mp[76][13] = mp[76][4] * mp[76][11] #costo de herrajes araña con factura
+            mp[76][14] = mp[76][5] * mp[76][11] #costo de herrajes araña con descuento
+
+            mp[77][11] = cantidad * (nvertical - 1) * (mhorizontal - 1) # cantidad de soportes de herrajes araña
+            mp[77][13] = mp[77][4] * mp[77][11] #costo de soportes de herrajes araña con factura
+            mp[77][14] = mp[77][5] * mp[77][11] #costo de soportes de herrajes araña con descuento
+
+            mp[157][11] = cantidad * (nvertical - 1) * 2 # cantidad de anclajes de hierro
+            mp[157][13] = mp[157][4] * mp[157][11] #costo de anclajes de hierro con factura
+            mp[157][14] = mp[157][5] * mp[157][11] #costo de anclajes de hierro con descuento
+
+            mp[158][11] = cantidad * (nvertical - 1) * 2 * 2# cantidad de pernos de expanción
+            mp[158][13] = mp[158][4] * mp[158][11] #costo de pernos de expanción con factura
+            mp[158][14] = mp[158][5] * mp[158][11] #costo de pernos de expanción con descuento
+
+            for i in (1, 195):
+                mp[i][15] = float(mp[i][13])*0.87*1.10/0.84
+                mp[i][17] = float(mp[i][13])*0.87*1.15/0.84
+                mp[i][16] = float(mp[i][14])*1.1
+                mp[i][18] = float(mp[i][14])*1.15
+
+            for i in (1, 195):
+                for j in (11, 18):
+                    mp_ac[i][j] = float(mp_ac[i][j]) + float(mp[i][j])
+
+            accesorios = mp[158][13] + mp[157][13] + mp[77][13] + mp[76][13] + mp[16][13] + mp[13][13] + mp[14][13] + mp[5][13] + mp[3][13] + mp[1][13]
+
+            print(mp[158][13], mp[157][13], mp[77][13], mp[76][13], mp[16][13], mp[13][13], mp[14][13], mp[5][13], mp[3][13], mp[1][13])
+
+            print(mp[158][15], mp[157][15], mp[77][15], mp[76][15], mp[16][15], mp[13][15], mp[14][15], mp[5][15], mp[3][15], mp[1][15])
+
+
+            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo accesorios  =  "+str(accesorios)+"  $us. ")     
             self.ventana.destroy()
             application=opcion()
         else:
             messagebox.showinfo("NO", "ERROR algun dato ingresado no es correcto o no ingresaste algún dato")
-        
+
 class previo:
     def salir(self):
         self.ventana.destroy()
