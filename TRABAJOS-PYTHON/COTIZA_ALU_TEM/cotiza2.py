@@ -4,6 +4,10 @@ from tkinter import messagebox
 from tkinter import Tk, mainloop, OptionMenu, Label, StringVar, Entry, Button, Spinbox
 from PIL import ImageTk, Image
 from datetime import datetime
+from prettytable import PrettyTable
+import random
+import string
+import sys
 
 import sqlite3
 conn = sqlite3.connect("database_proyecto.db")
@@ -264,7 +268,6 @@ util1 = 1.10
 util2 = 1.15
 
 class login:
-    global acum, mp
     def __init__(self):
         self.ventana = Tk()
         self.ventana.geometry("390x560")
@@ -309,11 +312,14 @@ class login:
         mainloop()
 
     def entrar(self):
-        global nombre, contra
+        global nombre, contra, acum, mp
         nombre = self.entry_usuario.get()
         contra = self.entry_password.get()
         if (nombre == "TECNICO" and contra == "123") or (nombre == "RAFA" and contra == "555"):
             acum = inicia
+            for i in range(203, 237, 1):
+                for j in range(4, 10, 1):
+                    acum[i][j] = 0.00
             mp = inicia
             self.ventana.destroy()
             application=registro()
@@ -324,7 +330,6 @@ class login:
         self.ventana.destroy()
 
 class registro:
-    global acum, mp
     def __init__(self):
         self.ventana = Tk()
         self.ventana.geometry("390x600")
@@ -398,8 +403,8 @@ class registro:
         application=login()
 
     def registrar(self):
+        global acum, mp
         if len(self.entry_tecnico.get()) != 0 and len(self.entry_obra.get()) != 0 and len(self.entry_cliente.get()) != 0 and len(self.entry_telefono.get()) != 0 and len(self.entry_direccion.get()) != 0 and len(self.entry_correo.get()) != 0 and len(self.entry_observaciones.get()) != 0:
-
             # inicializando listas acumuladas y parciales para calcular costos y registrar
             acum[196][3] = self.entry_tecnico.get()
             acum[197][3] = self.entry_obra.get()
@@ -410,8 +415,7 @@ class registro:
             acum[202][3] = self.entry_observaciones.get()
 
             for i in range(1, 237, 1):
-                for j in range(4, 19, 1):
-                    acum[i][j] = 0.00
+                for j in range(11, 19, 1):
                     mp[i][j] = 0.00
 
             self.ventana.destroy()
@@ -420,7 +424,6 @@ class registro:
             messagebox.showinfo("NO", "ERROR .... algun dato ingresado no es correcto o no ingresaste algún dato, REVISA por favor e ingresa los datos correctamente.... ")
 
 class opcion:
-    global acum, mp
     def __init__(self):        
         self.ventana = Tk()
         self.ventana.geometry("390x700")
@@ -468,6 +471,7 @@ class opcion:
         mainloop()
 
     def cotizar(self):
+        global acum, mp
         base = float(0)
         altura = float(0)
         cantidad = int(0)
@@ -540,15 +544,76 @@ class opcion:
             messagebox.showinfo("NO", "ERROR ...... algun dato ingresado no es correcto o no ingresaste la opcion ..... intenta nuevamente ....")
     
     def proforma(self):
+        global acum, mp
+
+        op = self.entry_opcion.get()
+        
+        if op == "1":
+            op1a = op1()
+            op1a.cotizar()
+
+        elif op == "2":
+            op1a = op1()
+            op1a.cotizar()
+
+        elif op == "3":
+            op3a = op3()
+            op3a.cotizar()
+
+        elif op == "4":
+            op4a = op4()
+            op4a.cotizar()
+
+        elif op == "5":
+            op5a = op5()
+            op5a.cotizar()
+
+        elif op == "6":
+            op6a = op6()
+            op6a.cotizar()
+
+        elif op == "7":
+            op7a = op7()
+            op7a.cotizar()
+
+        elif op == "8":
+            op8a = op8()
+            op8a.cotizar()
+
+        elif op == "9":
+            op9a = op9()
+            op9a.cotizar()
+
+        elif op == "10":
+            op10a = op10()
+            op10a.cotizar()
+
+        elif op == "11":
+            op11a = op11()
+            op11a.cotizar()
+
+        elif op == "12":
+            op12a = op12()
+            op12a.cotizar()
+
+        elif op == "13":
+            op13a = op13()
+            op13a.cotizar()
+
+        elif op == "14":
+            op14a = op14()
+            op14a.cotizar()
+
         print("FACTURA PROFORMA \n TECNICO : ",acum[196][3], "            OBRA : =",acum[197][3], " \n CLIENTE : ",acum[198][3], "            TELEFONO : ",acum[199][3], " \n DIRECCION : ",acum[200][3], "        CORREO : ",acum[201][3], " \n OBSERVACIONES : ",acum[202][3], " \n PRODUCTO               ==>  CANTIDAD     UNIDAD     SUPERFICIE   MT2   COSTO M.O    COSTO ACC.   COSTO VIDRIO     COSTO TOTAL")
         for i in range(203, 237, 1):
             if acum[i][4] > 0:
-                print(acum[i][2], " ==> ",acum[i][4], "  ",acum[i][3], " ==> ",acum[i][5], "  Mt2   ", (round((acum[i][6]*util1*0.87/0.84), 2)), " $us. ",(round((acum[i][7]*util1*0.87/0.84), 2)), " $us.", (round((acum[i][8]*util1*0.87/0.84), 2)), " $us.", (round((acum[i][9]*util1*0.87/0.84), 2)), " $us. ")
+                print(acum[i][2], " ==> ",acum[i][4], "  ",acum[i][3], " ==> ",acum[i][5], "  Mt2   ", (round((acum[i][6] * util1 * 0.87 / 0.84), 2)), " $us. ",(round((acum[i][7] * util1 * 0.87 / 0.84), 2)), " $us.", (round((acum[i][8] * util1 * 0.87 / 0.84), 2)), " $us.", (round((acum[i][9] * util1 * 0.87 / 0.84), 2)), " $us. ")
 
         self.ventana.destroy()
         application=opcion()
 
     def material(self):
+        global acum, mp
         if nombre == "RAFA" and contra == "555":
             for i in range(1, 196, 1):
                 if acum[i][11] > 0:
@@ -565,7 +630,6 @@ class opcion:
         application=login()
 
 class op1:
-    global acum, mp
     def __init__(self):
         self.ventana = Tk()
         self.ventana.geometry("380x740")
@@ -646,6 +710,7 @@ class op1:
         application=login()
 
     def cotizar(self):
+        global acum, mp
         if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0 and len(self.espesor_v.get()) != 0 and len(self.color_v.get()) != 0:
             while True:
                 try:
@@ -653,8 +718,7 @@ class op1:
                     y = float(self.entry_altura.get())
                     break
 
-                except ValueError:
-                
+                except ValueError:                
                     messagebox.showinfo("NO", "ERROR ....... La medida de la BASE ó ALTURA no son correctas, revise los doatos ingresados e introduzca nuevamente los valores .... RECUERDE LA SEPARACION DECIMAL ES CON PUNTO . ")
                     return(False)
                 
@@ -666,7 +730,6 @@ class op1:
                     break
 
                 except ValueError:
-
                     messagebox.showinfo("NO", "ERROR ....... La CANTIDAD O LAS DIVISIONES, no son correctas, revise los datos ingresados e introduzca nuevamente los valores correctos.... RECUERDE QUE DEBEN SER NUMEROS SIN DECIMALES")
                     return(False)
                 
@@ -921,6 +984,7 @@ class op2:
         application=login()
 
     def cotizar(self):
+        global acum, mp
         if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0 and len(self.espesor_v.get()) != 0 and len(self.color_v.get()) != 0:
             while True:
                 try:
@@ -1183,6 +1247,7 @@ class op3:
         application=login()
 
     def cotizar(self):
+        global acum, mp
         if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.espesor_v.get()) != 0 and len(self.color_v.get()) != 0: 
 
             while True:
