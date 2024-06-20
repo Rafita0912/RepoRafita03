@@ -8,6 +8,7 @@ from prettytable import PrettyTable
 import random
 import string
 import sys
+import math
 
 import sqlite3
 conn = sqlite3.connect("database_proyecto.db")
@@ -56,7 +57,7 @@ inicia = [
     ["V19", "V19", "VEDAPRES 003 - H (2,10MT/BARRA) BCE.", "Barras", 5.25, 5.00, 5.99, 5.50, 6.26, 5.75, "Florencio Rivero - cbba -  -  - santa puej -  - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["V20", "V20", "FRENO HIDRÁULICO DORMA", "Pza.", 89.25, 85.00, 101.69, 93.50, 106.31, 97.75, "Florencio Rivero - cbba -  -  - santa puej -  - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["V21", "V21", "FRENO HIDRÁULICO HYH", "Pza.", 70.00, 70.00, 79.75, 77.00, 83.38, 80.50, "Cristembo La Paz - cbba -  -  - santa puej -  - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
-    ["V22", "V22", "MANIJONES DE VIDRIO", "Pza.", 3.00, 3.00, 3.42, 3.30, 3.58, 3.45, "Revibol - cbba -  -  - santa puej -  - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
+    ["V22", "V22", "JALADORES TIPO C ó MANIJONES DE VIDRIO", "Pza.", 3.00, 3.00, 3.42, 3.30, 3.58, 3.45, "Revibol - cbba -  -  - santa puej -  - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["V23", "V23", "1003 ( CROMADO Ó BRONCE VIEJO )", "Pza.", 2.55, 2.55, 2.91, 2.81, 3.04, 2.94, "Alvicruz + 0.15 transp - cbba -  - 2.4 - santa puej - puestos S.C. - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["V24", "V24", "1013 ( CROMADO Ó BRONCE VIEJO )", "Pza.", 3.15, 3.15, 3.59, 3.47, 3.76, 3.63, "Alvicruz + 0.15 transp - cbba -  - 3 - santa puej - puestos S.C. - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["V25", "V25", "1038 ( CROMADO Ó BRONCE VIEJO )", "Pza.", 1.15, 1.15, 1.32, 1.27, 1.37, 1.33, "Alvicruz + 0.15 transp - cbba -  - 1 - santa puej - puestos S.C. - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
@@ -262,8 +263,8 @@ inicia = [
     ["PBSCFLS10", "PBSCFLS10", "PUERTAS BATIENTES SIMPLE CON FIJOS LATERAL Y SUPERIOR DE VIDRIO TEMPLADO INCOLORO DE 10 mm DE ESPESOR ", "Pza(s).", 0, 0, 0, 0, 0, 0, "Datos para proforma", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["PBSCFLS10C", "PBSCFLS10C", "PUERTAS BATIENTES SIMPLE CON FIJOS LATERAL Y SUPERIOR DE VIDRIO TEMPLADO COLOR DE 10 mm DE ESPESOR ", "Pza(s).", 0, 0, 0, 0, 0, 0, "Datos para proforma", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]]
 
-acum = inicia
-mp = inicia
+acum = inicia.copy()
+mp = inicia.copy()
 util1 = 1.10
 util2 = 1.15
 
@@ -287,7 +288,7 @@ class login:
         self.titulo = Label(self.frame1, text="Introduzca usuario y contraseña", font=("Comic Sans", 16,"bold"), bg="#88ff84")
         self.titulo.pack(side="top", pady=15)
 
-        self.img = Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/LOGO_CRISTEMBO.png")
+        self.img = Image.open("C:/Users/PcAsusZenbookRafita/Desktop/REPO_RAFAEL_ANTEQUERA/TRABAJOS-PYTHON/COTIZA_ALU_TEM/imagenes/LOGO_MASERCON.png")
         self.img = self.img.resize((340,100))
         self.render = ImageTk.PhotoImage(self.img)
         self.fondo = Label(self.frame1, image = self.render, bg="#88ff84")
@@ -316,11 +317,10 @@ class login:
         nombre = self.entry_usuario.get()
         contra = self.entry_password.get()
         if (nombre == "TECNICO" and contra == "123") or (nombre == "RAFA" and contra == "555"):
-            acum = inicia
+            acum = inicia.copy()
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     acum[i][j] = 0.00
-            mp = inicia
             self.ventana.destroy()
             application=registro()
         else:
@@ -413,18 +413,21 @@ class registro:
             acum[200][3] = self.entry_direccion.get()
             acum[201][3] = self.entry_correo.get()
             acum[202][3] = self.entry_observaciones.get()
-
+            for i in range(203, 237, 1):
+                for j in range(4, 10, 1):
+                    acum[i][j] = 0.00
+                    mp[i][j] = 0.00
             for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
-                    mp[i][j] = 0.00
-
+                    acum[i][j] = 0.00
             self.ventana.destroy()
             application=opcion()
         else:
             messagebox.showinfo("NO", "ERROR .... algun dato ingresado no es correcto o no ingresaste algún dato, REVISA por favor e ingresa los datos correctamente.... ")
 
 class opcion:
-    def __init__(self):        
+    def __init__(self):   
+        global acum, mp     
         self.ventana = Tk()
         self.ventana.geometry("390x700")
         self.ventana.title("Usuario")
@@ -450,6 +453,14 @@ class opcion:
         self.render = ImageTk.PhotoImage(self.img)
         self.fondo = Label(self.frame1, image = self.render, bg="#88ff84")
         self.fondo.pack(expand=0, fill='x', side='top', pady=3)
+
+        for i in range(203, 237, 1):
+            for j in range(4, 10, 1):
+                acum[i][j] = mp[i][j] + acum[i][j]
+                
+        for i in range(1, 237, 1):
+            for j in range(11, 19, 1):
+                acum[i][j] = mp[i][j] + acum[i][j]
 
         self.label_opcion = Label(self.frame2, width=18, text="OPCION : ",font=("Comic Sans", 14,"bold"), bg="#88ff84", fg="black")
         self.label_opcion.grid(row=0, column=0, padx=10, sticky="e")
@@ -545,76 +556,29 @@ class opcion:
     
     def proforma(self):
         global acum, mp
-
-        op = self.entry_opcion.get()
         
-        if op == "1":
-            op1a = op1()
-            op1a.cotizar()
-
-        elif op == "2":
-            op1a = op1()
-            op1a.cotizar()
-
-        elif op == "3":
-            op3a = op3()
-            op3a.cotizar()
-
-        elif op == "4":
-            op4a = op4()
-            op4a.cotizar()
-
-        elif op == "5":
-            op5a = op5()
-            op5a.cotizar()
-
-        elif op == "6":
-            op6a = op6()
-            op6a.cotizar()
-
-        elif op == "7":
-            op7a = op7()
-            op7a.cotizar()
-
-        elif op == "8":
-            op8a = op8()
-            op8a.cotizar()
-
-        elif op == "9":
-            op9a = op9()
-            op9a.cotizar()
-
-        elif op == "10":
-            op10a = op10()
-            op10a.cotizar()
-
-        elif op == "11":
-            op11a = op11()
-            op11a.cotizar()
-
-        elif op == "12":
-            op12a = op12()
-            op12a.cotizar()
-
-        elif op == "13":
-            op13a = op13()
-            op13a.cotizar()
-
-        elif op == "14":
-            op14a = op14()
-            op14a.cotizar()
-
         print("FACTURA PROFORMA \n TECNICO : ",acum[196][3], "            OBRA : =",acum[197][3], " \n CLIENTE : ",acum[198][3], "            TELEFONO : ",acum[199][3], " \n DIRECCION : ",acum[200][3], "        CORREO : ",acum[201][3], " \n OBSERVACIONES : ",acum[202][3], " \n PRODUCTO               ==>  CANTIDAD     UNIDAD     SUPERFICIE   MT2   COSTO M.O    COSTO ACC.   COSTO VIDRIO     COSTO TOTAL")
+        for i in range(203, 237, 1):
+            if mp[i][4] > 0:
+                print(mp[i][2], " ==> ",mp[i][4], "  ",mp[i][3], " ==> ",mp[i][5], "  Mt2   ", (round((mp[i][6] * util1 * 0.87 / 0.84), 2)), " $us. ",(round((mp[i][7] * util1 * 0.87 / 0.84), 2)), " $us.", (round((mp[i][8] * util1 * 0.87 / 0.84), 2)), " $us.", (round((mp[i][9] * util1 * 0.87 / 0.84), 2)), " $us. ")
+           
         for i in range(203, 237, 1):
             if acum[i][4] > 0:
                 print(acum[i][2], " ==> ",acum[i][4], "  ",acum[i][3], " ==> ",acum[i][5], "  Mt2   ", (round((acum[i][6] * util1 * 0.87 / 0.84), 2)), " $us. ",(round((acum[i][7] * util1 * 0.87 / 0.84), 2)), " $us.", (round((acum[i][8] * util1 * 0.87 / 0.84), 2)), " $us.", (round((acum[i][9] * util1 * 0.87 / 0.84), 2)), " $us. ")
-
+        
         self.ventana.destroy()
         application=opcion()
 
     def material(self):
         global acum, mp
         if nombre == "RAFA" and contra == "555":
+            
+            messagebox.showinfo("cot", "DETALLE DE MATERIALES \n TECNICO : "+str(acum[196][3])+"           OBRA : ="+str(acum[197][3])+" \n CLIENTE : "+str(acum[198][3])+"           TELEFONO : "+str(acum[199][3])+" \n DIRECCION : "+str(acum[200][3])+"        CORREO : "+str(acum[201][3])+" \n OBSERVACIONES : "+str(acum[202][3])+" \n DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 6.- "+str(mp[16][2])+"  =  "+str(mp[16][11])+"  "+str(mp[16][3])+" \n 7.- "+str(mp[76][2])+"  =  "+str(mp[76][11])+"  "+str(mp[76][3])+" \n 8.- "+str(mp[77][2])+"  =  "+str(mp[77][11])+"  "+str(mp[77][3])+" \n 9.- "+str(mp[157][2])+"  =  "+str(mp[157][11])+"  "+str(mp[157][3])+" \n 10.- "+str(mp[158][2])+"  =  "+str(mp[158][11])+"  "+str(mp[158][3])+" \n 11.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 12.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])) 
+
+            for i in range(1, 196, 1):
+                if mp[i][11] > 0:
+                    print(mp[i][2], " = ",mp[i][11], "  ",mp[i][3] , " ")
+        
             for i in range(1, 196, 1):
                 if acum[i][11] > 0:
                     print(acum[i][2], " = ",acum[i][11], "  ",acum[i][3] , " ")
@@ -710,7 +674,7 @@ class op1:
         application=login()
 
     def cotizar(self):
-        global acum, mp
+        global mp
         if len(self.entry_base.get()) != 0 and len(self.entry_altura.get()) != 0 and len(self.entry_cantidad.get()) != 0 and len(self.entry_nvertical.get()) != 0 and len(self.entry_mhorizontal.get()) != 0 and len(self.espesor_v.get()) != 0 and len(self.color_v.get()) != 0:
             while True:
                 try:
@@ -758,7 +722,7 @@ class op1:
             nvertical = int(self.entry_nvertical.get())
             mhorizontal = int(self.entry_mhorizontal.get())
 
-            mp = inicia
+            mp = inicia.copy()
             
             for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
@@ -812,6 +776,7 @@ class op1:
             mp[75][13] = round((mp[75][11] * mp[75][4]), 2)  #costo mano de obra con factura
             mp[75][14] = round((mp[75][11] * mp[75][5]), 2)  #costo mano de obra con descuento
             
+            # usar math.ceil() en lugar de round()
             mp[1][11] = round((( cantidad * ((4 * base) + (4 * altura) + ((nvertical-1) * altura) + ((mhorizontal-1) * base))) / 6), 2) # cantidad de silicona normal
             mp[1][13] = round((mp[1][4] * mp[1][11]), 2) #costo silicona natural con factura
             mp[1][14] = round((mp[1][5] * mp[1][11]), 2) #costo silicona natural con descuento
@@ -854,7 +819,7 @@ class op1:
 
             accesorios = round((mp[158][13] + mp[157][13] + mp[77][13] + mp[76][13] + mp[16][13] + mp[13][13] + mp[14][13] + mp[5][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -888,16 +853,10 @@ class op1:
                     mp[210][6] = mp[75][13]
                     mp[210][7] = accesorios
                     mp[210][8] = vidrio
-                    mp[210][9] = vidrio + accesorios + mp[75][13]   
+                    mp[210][9] = vidrio + accesorios + mp[75][13]  
+
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 6.- "+str(mp[16][2])+"  =  "+str(mp[16][11])+"  "+str(mp[16][3])+" \n 7.- "+str(mp[76][2])+"  =  "+str(mp[76][11])+"  "+str(mp[76][3])+" \n 8.- "+str(mp[77][2])+"  =  "+str(mp[77][11])+"  "+str(mp[77][3])+" \n 9.- "+str(mp[157][2])+"  =  "+str(mp[157][11])+"  "+str(mp[157][3])+" \n 10.- "+str(mp[158][2])+"  =  "+str(mp[158][11])+"  "+str(mp[158][3])+" \n 11.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 12.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")  
             
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
-        
             self.ventana.destroy()
             application=opcion()
         else:
@@ -1034,12 +993,12 @@ class op2:
             nvertical = int(self.entry_nvertical.get())
             mhorizontal = int(self.entry_mhorizontal.get())
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-            
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -1122,7 +1081,7 @@ class op2:
 
             accesorios = round((mp[56][13] + mp[55][13] + mp[78][13] + mp[13][13] + mp[14][13] + mp[5][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado con vientos y herrajes \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado con Herrajes y Vientos \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -1158,13 +1117,7 @@ class op2:
                     mp[214][8] = vidrio 
                     mp[214][9] = vidrio + accesorios + mp[75][13]  
             
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 6.- "+str(mp[78][2])+"  =  "+str(mp[78][11])+"  "+str(mp[78][3])+" \n 7.- "+str(mp[55][2])+"  =  "+str(mp[55][11])+"  "+str(mp[55][3])+" \n 8.- "+str(mp[56][2])+"  =  "+str(mp[56][11])+"  "+str(mp[56][3])+" \n 9.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 10.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(round(mp[75][11] + (cantidad * 0.20 * altura * (nvertical-1)), 2))+"  "+str(mp[75][3])+"  ") 
 
             self.ventana.destroy()
             application=opcion()
@@ -1296,9 +1249,9 @@ class op3:
             color = self.color_v.get()
             nvertical = int(self.entry_nvertical.get())
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
 
@@ -1372,7 +1325,7 @@ class op3:
 
             accesorios = round((mp[13][13] + mp[14][13] + mp[5][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Paño(s) Fijo(s) de Vidrio Templado \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Paño(s) Fijo(s) montados sobre perfil U de aluminio  \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -1408,13 +1361,7 @@ class op3:
                     mp[206][8] = vidrio
                     mp[206][9] = vidrio + accesorios + mp[75][13] 
             
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 6.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 7.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ") 
 
             self.ventana.destroy()
             application=opcion()
@@ -1549,12 +1496,12 @@ class op4:
             color = self.color_v.get()
             puertaventana = self.puertaventana.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-            
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -1663,7 +1610,7 @@ class op4:
 
             accesorios = round((mp[61][13] + mp[70][13] + mp[42][13] +mp[66][13] + mp[64][13] + mp[50][13] + mp[29][13] + mp[31][13] + mp[13][13] + mp[14][13] + mp[5][13] + mp[11][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Ventana(s) Corrediza(s) de 2 Hojas \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -1699,13 +1646,7 @@ class op4:
                     mp[218][8] = vidrio 
                     mp[218][9] = vidrio + accesorios + mp[75][13]
 
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j] 
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 6.- "+str(mp[11][2])+"  =  "+str(mp[11][11])+"  "+str(mp[11][3])+" \n 7.- "+str(mp[31][2])+"  =  "+str(mp[31][11])+"  "+str(mp[31][3])+" \n 8.- "+str(mp[29][2])+"  =  "+str(mp[29][11])+"  "+str(mp[29][3])+" \n 9.- "+str(mp[50][2])+"  =  "+str(mp[50][11])+"  "+str(mp[50][3])+" \n 10.- "+str(mp[64][2])+"  =  "+str(mp[64][11])+"  "+str(mp[64][3])+" \n 11.- "+str(mp[66][2])+"  =  "+str(mp[66][11])+"  "+str(mp[66][3])+" \n 12.- "+str(mp[70][2])+"  =  "+str(mp[70][11])+"  "+str(mp[70][3])+" \n 13.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 14.- "+str(mp[42][2])+"  =  "+str(mp[42][11])+"  "+str(mp[42][3])+" \n 15.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 16.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ") 
       
             self.ventana.destroy()
             application=opcion()
@@ -1839,9 +1780,9 @@ class op5:
             color = self.color_v.get()
             puertaventana = self.puertaventana.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
 
@@ -1957,7 +1898,7 @@ class op5:
 
             accesorios = round((mp[61][13] + mp[70][13] + mp[42][13] + mp[66][13] + mp[64][13] + mp[50][13] + mp[29][13] + mp[31][13] + mp[13][13] + mp[15][13] + mp[14][13] + mp[5][13] + mp[11][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Ventana(s) Corrediza(s) de 2 Hojas mas Fijo Superior \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -1993,13 +1934,7 @@ class op5:
                     mp[222][8] = vidrio
                     mp[222][9] = vidrio + accesorios + mp[75][13]  
 
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j] 
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[15][2])+"  =  "+str(mp[15][11])+"  "+str(mp[15][3])+" \n 6.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 7.- "+str(mp[11][2])+"  =  "+str(mp[11][11])+"  "+str(mp[11][3])+" \n 8.- "+str(mp[31][2])+"  =  "+str(mp[31][11])+"  "+str(mp[31][3])+" \n 9.- "+str(mp[29][2])+"  =  "+str(mp[29][11])+"  "+str(mp[29][3])+" \n 10.- "+str(mp[50][2])+"  =  "+str(mp[50][11])+"  "+str(mp[50][3])+" \n 11.- "+str(mp[64][2])+"  =  "+str(mp[64][11])+"  "+str(mp[64][3])+" \n 12.- "+str(mp[66][2])+"  =  "+str(mp[66][11])+"  "+str(mp[66][3])+" \n 13.- "+str(mp[70][2])+"  =  "+str(mp[70][11])+"  "+str(mp[70][3])+" \n 14.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 15.- "+str(mp[42][2])+"  =  "+str(mp[42][11])+"  "+str(mp[42][3])+" \n 16.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 17.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ") 
         
             self.ventana.destroy()
             application=opcion()
@@ -2133,8 +2068,9 @@ class op6:
             color = self.color_v.get()
             puertaventana = self.puertaventana.get()
 
-            mp = inicia
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
 
@@ -2250,7 +2186,7 @@ class op6:
 
             accesorios = round((mp[61][13] + mp[70][13] + mp[42][13] + mp[65][13] + mp[64][13] + mp[50][13] + mp[29][13] + mp[31][13] + mp[13][13] + mp[30][13] + mp[14][13] + mp[5][13] + mp[11][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Ventana(s) Corrediza(s) de 4 Hojas \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -2286,13 +2222,7 @@ class op6:
                     mp[226][8] = vidrio 
                     mp[226][9] = vidrio + accesorios + mp[75][13] 
 
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j] 
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[30][2])+"  =  "+str(mp[30][11])+"  "+str(mp[30][3])+" \n 6.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 7.- "+str(mp[11][2])+"  =  "+str(mp[11][11])+"  "+str(mp[11][3])+" \n 8.- "+str(mp[31][2])+"  =  "+str(mp[31][11])+"  "+str(mp[31][3])+" \n 9.- "+str(mp[29][2])+"  =  "+str(mp[29][11])+"  "+str(mp[29][3])+" \n 10.- "+str(mp[50][2])+"  =  "+str(mp[50][11])+"  "+str(mp[50][3])+" \n 11.- "+str(mp[64][2])+"  =  "+str(mp[64][11])+"  "+str(mp[64][3])+" \n 12.- "+str(mp[65][2])+"  =  "+str(mp[65][11])+"  "+str(mp[65][3])+" \n 13.- "+str(mp[70][2])+"  =  "+str(mp[70][11])+"  "+str(mp[70][3])+" \n 14.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 15.- "+str(mp[42][2])+"  =  "+str(mp[42][11])+"  "+str(mp[42][3])+" \n 16.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 17.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ") 
         
             self.ventana.destroy()
             application=opcion()
@@ -2425,12 +2355,12 @@ class op7:
             color = self.color_v.get()
             puertaventana = self.puertaventana.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                    
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -2547,7 +2477,7 @@ class op7:
 
             accesorios = round((mp[61][13] + mp[70][13] + mp[42][13] + mp[65][13] + mp[64][13] + mp[50][13] + mp[29][13] + mp[31][13] + mp[13][13] + mp[15][13] + mp[30][13] + mp[14][13] + mp[5][13] + mp[11][13] + mp[3][13] + mp[1][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Ventana(s) Corrediza(s) de 4 Hojas mas Fijo Superior \n con Vidrio Templado "+str(color)+" de "+str(espesor)+"  de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if espesor == "8 mm":
                 if color == "Incoloro":
@@ -2583,13 +2513,7 @@ class op7:
                     mp[230][8] = vidrio 
                     mp[230][9] = vidrio + accesorios + mp[75][13] 
  
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]  
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 2.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 3.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 4.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 5.- "+str(mp[15][2])+"  =  "+str(mp[15][11])+"  "+str(mp[15][3])+" \n 6.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 7.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 8.- "+str(mp[30][2])+"  =  "+str(mp[30][11])+"  "+str(mp[30][3])+" \n 9.- "+str(mp[31][2])+"  =  "+str(mp[31][11])+"  "+str(mp[31][3])+" \n 10.- "+str(mp[29][2])+"  =  "+str(mp[29][11])+"  "+str(mp[29][3])+" \n 11.- "+str(mp[50][2])+"  =  "+str(mp[50][11])+"  "+str(mp[50][3])+" \n 12.- "+str(mp[64][2])+"  =  "+str(mp[64][11])+"  "+str(mp[64][3])+" \n 13.- "+str(mp[65][2])+"  =  "+str(mp[65][11])+"  "+str(mp[65][3])+" \n 14.- "+str(mp[70][2])+"  =  "+str(mp[70][11])+"  "+str(mp[70][3])+" \n 15.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 16.- "+str(mp[42][2])+"  =  "+str(mp[42][11])+"  "+str(mp[42][3])+" \n 17.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 18.- "+"Vidrio templado "+str(color)+" de "+str(espesor)+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ") 
 
             self.ventana.destroy()
             application=opcion()
@@ -2712,12 +2636,12 @@ class op8:
             color = self.color_v.get()
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -2793,7 +2717,7 @@ class op8:
 
             accesorios = round((mp[51][13] + mp[63][13] + mp[67][13] + mp[44][13] + mp[43][13] + mp[41][13] + mp[61][13] + mp[38][13] + mp[37][13] + mp[40][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 1 Hoja \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[231][4] = cantidad 
@@ -2811,13 +2735,7 @@ class op8:
                 mp[232][8] = vidrio 
                 mp[232][9] = vidrio + accesorios + mp[75][13]  
          
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[63][2])+"  =  "+str(mp[63][11])+"  "+str(mp[63][3])+" \n 10.- "+str(mp[51][2])+"  =  "+str(mp[51][11])+"  "+str(mp[51][3])+" \n 11.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 12.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")
 
             self.ventana.destroy()
             application=opcion()
@@ -2940,12 +2858,12 @@ class op9:
             color = self.color_v.get()
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -3021,7 +2939,7 @@ class op9:
 
             accesorios = round((mp[51][13] + mp[69][13] + mp[67][13] + mp[44][13] + mp[43][13] + mp[41][13] + mp[61][13] + mp[38][13] + mp[37][13] + mp[40][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 2 Hojas \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[233][4] = cantidad 
@@ -3039,13 +2957,7 @@ class op9:
                 mp[234][8] = vidrio 
                 mp[234][9] = vidrio + accesorios + mp[75][13]  
           
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]   
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[51][2])+"  =  "+str(mp[51][11])+"  "+str(mp[51][3])+" \n 11.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 12.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")  
     
             self.ventana.destroy()
             application=opcion()
@@ -3174,12 +3086,12 @@ class op10:
             nvertical = int(self.entry_nvertical.get())
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -3275,7 +3187,7 @@ class op10:
 
             accesorios = round((mp[37][13] + mp[38][13] + mp[40][13] + mp[61][13] + mp[43][13] + mp[44][13] + mp[67][13] + mp[69][13] + mp[41][13] + mp[51][13] + mp[1][13] + mp[3][13] + mp[5][13] + mp[14][13] + mp[13][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 2 Hojas más Fijos Laterales \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[235][4] = cantidad 
@@ -3293,13 +3205,7 @@ class op10:
                 mp[236][8] = vidrio
                 mp[236][9] = vidrio + accesorios + mp[75][13] 
                           
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]   
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[51][2])+"  =  "+str(mp[51][11])+"  "+str(mp[51][3])+" \n 11.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 12.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 13.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 14.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 15.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 16.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 17.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")  
         
             self.ventana.destroy()
             application=opcion()
@@ -3422,12 +3328,12 @@ class op11:
             color = self.color_v.get()
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -3531,7 +3437,7 @@ class op11:
 
             accesorios = round((mp[37][13] + mp[38][13] + mp[40][13] + mp[61][13] + mp[43][13] + mp[44][13] + mp[67][13] + mp[69][13] + mp[41][13] + mp[51][13] + mp[62][13] + mp[52][13] + mp[1][13] + mp[3][13] + mp[5][13] + mp[14][13] + mp[13][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 2 Hojas más Fijo Superior \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[235][4] = cantidad 
@@ -3549,13 +3455,7 @@ class op11:
                 mp[236][8] = vidrio
                 mp[236][9] = vidrio + accesorios + mp[75][13]   
                           
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j] 
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[51][2])+"  =  "+str(mp[51][11])+"  "+str(mp[51][3])+" \n 11.- "+str(mp[62][2])+"  =  "+str(mp[62][11])+"  "+str(mp[62][3])+" \n 12.- "+str(mp[52][2])+"  =  "+str(mp[52][11])+"  "+str(mp[52][3])+" \n 13.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 14.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 15.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 16.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 17.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 18.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 19.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor   =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")  
 
             self.ventana.destroy()
             application=opcion()
@@ -3683,12 +3583,12 @@ class op12:
             nvertical = int(self.entry_nvertical.get())
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -3800,7 +3700,7 @@ class op12:
 
             accesorios = round((mp[37][13] + mp[38][13] + mp[40][13] + mp[61][13] + mp[43][13] + mp[44][13] + mp[67][13] + mp[69][13] + mp[41][13] + mp[62][13] + mp[52][13] + mp[53][13] + mp[55][13] + mp[60][13] + mp[1][13] + mp[3][13] + mp[5][13] + mp[14][13] + mp[13][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 2 Hoja al Muro con Fijos Laterales y Fijo Superior \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[235][4] = cantidad 
@@ -3818,13 +3718,7 @@ class op12:
                 mp[236][8] = vidrio 
                 mp[236][9] = vidrio + accesorios + mp[75][13]  
                                   
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[53][2])+"  =  "+str(mp[53][11])+"  "+str(mp[53][3])+" \n 11.- "+str(mp[62][2])+"  =  "+str(mp[62][11])+"  "+str(mp[62][3])+" \n 12.- "+str(mp[52][2])+"  =  "+str(mp[52][11])+"  "+str(mp[52][3])+" \n 13.- "+str(mp[55][2])+"  =  "+str(mp[55][11])+"  "+str(mp[55][3])+" \n 14.- "+str(mp[60][2])+"  =  "+str(mp[60][11])+"  "+str(mp[60][3])+" \n 15.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 16.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 17.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 18.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 19.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 20.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 21.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")
 
             self.ventana.destroy()
             application=opcion()
@@ -3953,12 +3847,12 @@ class op13:
             nvertical = int(self.entry_nvertical.get())
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                        
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -4066,7 +3960,7 @@ class op13:
 
             accesorios = round((mp[37][13] + mp[38][13] + mp[40][13] + mp[61][13] + mp[43][13] + mp[44][13] + mp[67][13] + mp[69][13] + mp[41][13] + mp[62][13] + mp[53][13] + mp[55][13] + mp[60][13] + mp[1][13] + mp[3][13] + mp[5][13] + mp[14][13] + mp[13][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta(s) Batiente(s) de 2 Hojas al centro  con Fijos Laterales mas Fijo Superior\n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[235][4] = cantidad 
@@ -4084,13 +3978,7 @@ class op13:
                 mp[236][8] = vidrio  
                 mp[236][9] = vidrio + accesorios + mp[75][13] 
 
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j]
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[53][2])+"  =  "+str(mp[53][11])+"  "+str(mp[53][3])+" \n 11.- "+str(mp[62][2])+"  =  "+str(mp[62][11])+"  "+str(mp[62][3])+" \n 12.- "+str(mp[55][2])+"  =  "+str(mp[55][11])+"  "+str(mp[55][3])+" \n 13.- "+str(mp[60][2])+"  =  "+str(mp[60][11])+"  "+str(mp[60][3])+" \n 14.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 15.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 16.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 17.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 18.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 19.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 20.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")
 
             self.ventana.destroy()
             application=opcion()
@@ -4218,12 +4106,12 @@ class op14:
             nvertical = int(self.entry_nvertical.get())
             freno = self.freno.get()
 
-            mp = inicia
-
-            for i in range(0, 237, 1):
+            mp = inicia.copy()
+            
+            for i in range(1, 237, 1):
                 for j in range(11, 19, 1):
                     mp[i][j] = 0.00
-                                                            
+
             for i in range(203, 237, 1):
                 for j in range(4, 10, 1):
                     mp[i][j] = 0.00
@@ -4335,7 +4223,7 @@ class op14:
 
             accesorios = round((mp[37][13] + mp[38][13] + mp[40][13] + mp[61][13] + mp[43][13] + mp[44][13] + mp[67][13] + mp[69][13] + mp[41][13] + mp[62][13] + mp[52][13] + mp[57][13] + mp[55][13] + mp[60][13] + mp[1][13] + mp[3][13] + mp[5][13] + mp[14][13] + mp[13][13]), 2)
             
-            messagebox.showinfo("cot", str(cantidad)+"  Frente(s) de Vidrio Templado tipo Spyder \n de  "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
+            messagebox.showinfo("cot", str(cantidad)+"  Puerta Batiente de 1 Hoja al Muro con Fijo Laterale y Fijo Superior \n con Vidrio Templado "+str(color)+" de 10 mm de espesor \n "+str(base)+"  Mt. de base   x  "+str(altura)+"  Mt. de altura ==> "+str(base * altura * cantidad)+ " Mt2. \n TOTAL COSTO PARCIAL  "+str(vidrio + mp[75][13] + accesorios)+" $us \n Costo de vidrio templado =  "+str(vidrio)+"  $us \n Costo de la mano de obra  =  "+str(mp[75][13])+" $us. \n Costo de accesorios  = "+str(accesorios)+"  $us. ")  
 
             if color == "Incoloro":
                 mp[235][4] = cantidad 
@@ -4353,13 +4241,7 @@ class op14:
                 mp[236][8] = vidrio
                 mp[236][9] = vidrio + accesorios + mp[75][13]  
 
-            for i in range(1, 237, 1):
-                for j in range(11, 19, 1):
-                    acum[i][j] += mp[i][j]
-            
-            for i in range(203, 237, 1):
-                for j in range(4, 10, 1):
-                    acum[i][j] += mp[i][j] 
+            messagebox.showinfo("cot2", "DETALLE DE MATERIALES \n 1.- "+str(mp[37][2])+"  =  "+str(mp[37][11])+"  "+str(mp[37][3])+" \n 2.- "+str(mp[38][2])+"  =  "+str(mp[38][11])+"  "+str(mp[38][3])+" \n 3.- "+str(mp[40][2])+"  =  "+str(mp[40][11])+"  "+str(mp[40][3])+" \n 4.- "+str(mp[61][2])+"  =  "+str(mp[61][11])+"  "+str(mp[61][3])+" \n 5.- "+str(mp[41][2])+"  =  "+str(mp[41][11])+"  "+str(mp[41][3])+" \n 6.- "+str(mp[43][2])+"  =  "+str(mp[43][11])+"  "+str(mp[43][3])+" \n 7.- "+str(mp[44][2])+"  =  "+str(mp[44][11])+"  "+str(mp[44][3])+" \n 8.- "+str(mp[67][2])+"  =  "+str(mp[67][11])+"  "+str(mp[67][3])+" \n 9.- "+str(mp[69][2])+"  =  "+str(mp[69][11])+"  "+str(mp[69][3])+" \n 10.- "+str(mp[52][2])+"  =  "+str(mp[52][11])+"  "+str(mp[52][3])+" \n 11.- "+str(mp[62][2])+"  =  "+str(mp[62][11])+"  "+str(mp[62][3])+" \n 12.- "+str(mp[55][2])+"  =  "+str(mp[55][11])+"  "+str(mp[55][3])+" \n 13.- "+str(mp[55][2])+"  =  "+str(mp[55][11])+"  "+str(mp[55][3])+" \n 14.- "+str(mp[60][2])+"  =  "+str(mp[60][11])+"  "+str(mp[60][3])+" \n 15.- "+str(mp[1][2])+"  =  "+str(mp[1][11])+"  "+str(mp[1][3])+" \n 16.- "+str(mp[3][2])+"  =  "+str(mp[3][11])+"  "+str(mp[3][3])+" \n 17.- "+str(mp[5][2])+"  =  "+str(mp[5][11])+"  "+str(mp[5][3])+" \n 18.- "+str(mp[14][2])+"  =  "+str(mp[14][11])+"  "+str(mp[14][3])+" \n 19.- "+str(mp[13][2])+"  =  "+str(mp[13][11])+"  "+str(mp[13][3])+" \n 20.- "+str(mp[75][2])+"  =  "+str(mp[75][11])+"  "+str(mp[75][3])+" \n 21.- "+"Vidrio templado "+str(color)+" de 10 mm de espesor  =  "+str(mp[75][11])+"  "+str(mp[75][3])+"  ")
         
             self.ventana.destroy()
             application=opcion()

@@ -3,7 +3,7 @@ import random
 import string
 import sys
 
-animal_dic = {}
+materiales_dic = {}
 
 # ~~~~~~~~~~~~~~~~~~ Functions(): ~~~~~~~~~~~~~~~~~~~
 def main():
@@ -13,11 +13,11 @@ def main():
         user_input = input("\nWhat do you want to do? "
                            "(a, d, u, l, e): ").lower()
         if user_input == "a":
-            add_animal()
+            add_materiales()
         elif user_input == "d":
-            delete_animal()
+            delete_materiales()
         elif user_input == "u":
-            update_animal()
+            update_materiales()
         elif user_input == "l":
             print_register()
         elif user_input == "e":
@@ -27,56 +27,70 @@ def main():
 
 # ~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~
 def instrucctions():
-    print('\nAnimal registry program:'
-          '\n1: Enter A or a to add new animal.'
-          '\n2: Enter D or d to delete a animal'
-          '\n3: Enter U or u to update animal.'
-          '\n4: Enter L or l to check list of animals. '
+    print('\n Registro de proformas y materiales : '
+          '\n1: Enter A or a to add new materiales.'
+          '\n2: Enter D or d to delete a materiales'
+          '\n3: Enter U or u to update materiales.'
+          '\n4: Enter L or l to check list of materialess. '
           '\n5: Enter E or e to exit the program.')
     
 def print_register():
-    x = PrettyTable(["ID", "Scientific Name", "Common Name"])
-    for animal_data in animal_dic:
-        x.add_row([animal_data, animal_dic[animal_data]["scientific_name"],
-                   animal_dic[animal_data]["common_name"]])
-    print(x.get_string(title="Animal registry"))
+    x = PrettyTable(["ID", "Cod1 ", "Cod2", "Des", "Uni", "CCF-Can", "CCD-Sup", "V1CF-CMO", "V1CD-CAC", "V2CF-CVI", "V2CD-CTOT", "Obs", "AcCan", "AcMet", "AcCCF","AcCCD"])
+    for materiales_data in materiales_dic:
+        x.add_row([materiales_data, 
+                   materiales_dic[materiales_data]["Cod1"],
+                   materiales_dic[materiales_data]["Cod2"],
+                   materiales_dic[materiales_data]["Des"],
+                   materiales_dic[materiales_data]["Uni"],
+                   materiales_dic[materiales_data]["CCF-Can"],
+                   materiales_dic[materiales_data]["CCD-Sup"],
+                   materiales_dic[materiales_data]["V1CF-CMO"],
+                   materiales_dic[materiales_data]["V1CD-CAC"],
+                   materiales_dic[materiales_data]["V2CF-CVI"],
+                   materiales_dic[materiales_data]["V2CD--CTOT"],
+                   materiales_dic[materiales_data]["Obs"],
+                   materiales_dic[materiales_data]["AcCan"],
+                   materiales_dic[materiales_data]["AcMet"],
+                   materiales_dic[materiales_data]["AcCCF"],
+                   materiales_dic[materiales_data]["AcCCD"]])
+    print(x.get_string(title="materiales registry"))
 
-for animal_data in animal_dic:
-    x.add_row([animal_data, animal_dic[animal_data]["scientific_name"], animal_dic[animal_data]["common_name"]])
-    print(x.get_string(title="Animal registry"))
+for materiales_data in materiales_dic:
+    x.add_row([materiales_data, materiales_dic[materiales_data]["scientific_name"], materiales_dic[materiales_data]["common_name"]])
+    print(x.get_string(title="materiales registry"))
 
 def random_id():
     random_string = ''.join(random.choices(string.ascii_uppercase
                                            + string.digits, k=4))
     return random_string
 
-def add_animal():
-    animal_id = random_id()
+def add_materiales():
+    materiales_id = random_id()
     scientific_name = input("\nPlease enter the scientific name: ").title()
     common_name = input("\nPlease enter the common name: ").title()
-    data = {animal_id: {'scientific_name': scientific_name,
+    data = {materiales_id: {'scientific_name': scientific_name,
                         'common_name': common_name}}
     if not scientific_name and not common_name:
         print("You must write something!")
     else:
-        animal_dic.update(data)
+        materiales_dic.update(data)
 
-def delete_animal():
-    animal_id = input("\nEnter the animal ID you want delete: ").upper()
-    if animal_id in animal_dic:
+def delete_materiales():
+    materiales_id = input("\nEnter the materiales ID you want delete: ").upper()
+    if materiales_id in materiales_dic:
         choice = input("Delete (y/n)").lower()
         if choice == "yes" or choice == "y":
-            del animal_dic[animal_id]
-            print(f"{animal_id} registry has been deleted!")
+            del materiales_dic[materiales_id]
+            print(f"{materiales_id} registry has been deleted!")
     else:
         print("ID not found. Check list pressing 'L'")
 
-def update_animal():
-    animal_id = input("\nEnter the animal ID you want update: ").upper()
-    # If external key in dictionary, if key is equal to ID (animal_id)
-    for animal in animal_dic:
-        if animal == animal_id:
-            choice = input(f"Update registry {animal_id}? (y/n): ").lower()
+def update_materiales():
+    materiales_id = input("\nEnter the materiales ID you want update: ").upper()
+    # If external key in dictionary, if key is equal to ID (materiales_id)
+    for materiales in materiales_dic:
+        if materiales == materiales_id:
+            choice = input(f"Update registry {materiales_id}? (y/n): ").lower()
             if choice == "yes" or choice == "y":
                 # Changing names
                 scientific_name = input("Write a new scientific name: ").title()
@@ -85,10 +99,10 @@ def update_animal():
                     print("You must write something!")
                 else:
                 # Updating
-                    animal_dic[animal]['scientific_name'] = scientific_name
-                    animal_dic[animal]['common_name'] = common_name
+                    materiales_dic[materiales]['scientific_name'] = scientific_name
+                    materiales_dic[materiales]['common_name'] = common_name
                     print("registry updated!")
-                    print_registry()
+                    print_register()
         else:
             print("ID not found. Check list pressing 'L'")
 

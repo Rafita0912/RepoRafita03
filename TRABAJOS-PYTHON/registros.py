@@ -57,7 +57,7 @@ def add_animal():
     data = {animal_id: {'scientific_name': scientific_name,
                         'common_name': common_name}}
     if not scientific_name and not common_name:
-        print("You must write something!")
+        print("You must write something!") 
     else:
         animal_dic.update(data)
 

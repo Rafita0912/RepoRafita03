@@ -1,5 +1,5 @@
 inicia = [
-    ["codigo ", "codigo original", "descripcion", "unidad", "costoc", "costos", "venta1CF", "venta1CD", "venta2CF", "venta2CD", "observaciones", "ac_cantidad", "ac_metros2", "ac_costoc", "ac_costos", "ac_precio1cf", "ac_precio1cd", "ac_precio2cf", "ac_precio2cd"], 
+    ["codigo ", "codigo original", "descripcion", "unidad", "costoc--cantidad", "costos--superficie", "venta1CF--costoMO", "venta1CD--costoACCES", "venta2CF--costoVIDRIO", "venta2CD--costoTOTAL", "observaciones", "ac_cantidad", "ac_metros2", "ac_costoc", "ac_costos", "ac_precio1cf", "ac_precio1cd", "ac_precio2cf", "ac_precio2cd"], 
     ["M1", "M1", "SILICONA TRANSPARENTE, BLANCA O NEGRA", "Tubo", 2.90, 2.90, 3.31, 3.19, 3.46, 3.34, "MAROL 20 Bs. -   -   - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["M2", "M2", "SILICONA ESTRUCTURAL", "Tubo", 6.24, 6.00, 7.11, 6.59, 7.44, 6.90, "MAROL 20 Bs. -   -   - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
     ["M3", "M3", "CINTA MASKING 1/2  Pulg. (ROLLO DE 20)", "Rollo", 0.65, 0.65, 0.75, 0.72, 0.78, 0.75, "Ribepar  -   -   - ", 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
